@@ -1,13 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+
 import App from './App';
+
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
+import './index.scss';
+
+const app = (
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>
+);
+
+ReactDOM.render(
+  <React.StrictMode>{app}</React.StrictMode>,
   document.getElementById('root')
 );
 

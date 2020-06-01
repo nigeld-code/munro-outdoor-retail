@@ -1,0 +1,18 @@
+@import "../../style-variables//variables";
+
+.Header {
+  height: $header-height;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderLogo {
+  position: relative;
+  height: $header-height;
+  width: 7rem;
+  padding: 0.5rem 0.25rem;
+  box-sizing: border-box;
+}

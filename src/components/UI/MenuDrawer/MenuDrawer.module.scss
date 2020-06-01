@@ -1,0 +1,28 @@
+@import '../../../style-variables/variables';
+
+.MenuDrawer {
+  position: fixed;
+  width: 250px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background-color: map-get($colors, middle-green-yellow);
+  padding: 2rem;
+  transition: transform 200ms ease;
+  box-sizing: border-box;
+}
+
+.Open {
+  transform: translateX(0);
+}
+
+.Close {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 500px) {
+  .MenuDrawer {
+    display: none;
+  }
+}

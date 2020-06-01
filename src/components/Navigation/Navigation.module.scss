@@ -1,0 +1,46 @@
+@import "../../style-variables/variables";
+
+.NavigationNavItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.NavigationNavItemsMenuDrawer {
+  display: flex;
+  flex-flow: column nowrap;
+
+  li {
+    margin: 1rem;
+  }
+
+  a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.Navbar {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-left: 0.75rem;
+
+  li {
+    margin: 0 0.4rem;
+  }
+
+  a {
+    text-decoration: underline map-get($colors, middle-green-yellow);
+  }
+}
+
+@media (max-width: calc(#{$mobile-width} - 1px)) {
+  .Navbar {
+    display: none;
+  }
+}
