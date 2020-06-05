@@ -2,30 +2,24 @@ import React from 'react';
 
 import classes from './SlideShowDisplay.module.scss';
 
-const imgsIndexForDisplay = (num, length) => {
-  let imgNum = num;
-  if (imgNum < 0) {
-    imgNum = length - 1;
-  } else if (imgNum >= length) {
-    imgNum = 0;
+const slidesIndexForDisplay = (num, length) => {
+  let slideNum = num;
+  if (slideNum < 0) {
+    slideNum = length - 1;
+  } else if (slideNum >= length) {
+    slideNum = 0;
   }
-  return imgNum;
+  return slideNum;
 };
 
 const SlideShowDisplay = props => {
-  const imageForSlideShow = [];
+  const slidesForSlideShow = [];
   props.slides &&
-    props.slides.forEach((img, index) => {
-      imageForSlideShow.push(
-        <img
-          className={classes.Slide}
-          key={'Slide' + index}
-          src={img.src}
-          alt={img.alt}
-          onClick={() => {
-            img.click && img.click();
-          }}
-        />
+    props.slides.forEach((slide, index) => {
+      slidesForSlideShow.push(
+        <div className={classes.Slide} key={'Slide' + index}>
+          {slide.contents}
+        </div>
       );
     });
 
@@ -70,31 +64,22 @@ const SlideShowDisplay = props => {
     >
       <div className={classes.LastDisplay} style={props.display}>
         {
-          imageForSlideShow[
-            imgsIndexForDisplay(
-              props.displayNumber,
-              imageForSlideShow.length
-            )
+          slidesForSlideShow[
+            slidesIndexForDisplay(props.displayNumber, slidesForSlideShow.length)
           ]
         }
       </div>
       <div className={classes.CurrentDisplay} style={props.display}>
         {
-          imageForSlideShow[
-            imgsIndexForDisplay(
-              props.numForDisplay,
-              imageForSlideShow.length
-            )
+          slidesForSlideShow[
+            slidesIndexForDisplay(props.numForDisplay, slidesForSlideShow.length)
           ]
         }
       </div>
       <div className={classes.NextDisplay} style={props.display}>
         {
-          imageForSlideShow[
-            imgsIndexForDisplay(
-              props.displayNumber,
-              imageForSlideShow.length
-            )
+          slidesForSlideShow[
+            slidesIndexForDisplay(props.displayNumber, slidesForSlideShow.length)
           ]
         }
       </div>

@@ -41,6 +41,7 @@ const SlideShow = props => {
   const { display } = props;
   const [displayNumber, setDisplayNumber] = useState(0);
   const [numForDisplay, setNumForDisplay] = useState(0);
+  const [allowInput, setAllowInput] = useState(true);
   const screenSize = useSelector(state => state.config.screenSize);
   const touchScreenRespond = useTouchSwipe();
   const slideShowRef = useRef();
@@ -61,7 +62,7 @@ const SlideShow = props => {
   const slideshowNavHandler = useCallback(
     control => {
       setDisplayNumber(() => {
-        if (displayNumber === numForDisplay) {
+        if (allowInput) {
           if (typeof control === 'number') {
             return control;
           }
@@ -80,12 +81,14 @@ const SlideShow = props => {
         return displayNumber;
       });
     },
-    [displayNumber, numForDisplay, props.slides.length]
+    [displayNumber, props.slides.length, allowInput]
   );
 
   useEffect(() => {
+    setAllowInput(false);
     const controlChangeDisplay = setTimeout(() => {
       setNumForDisplay(displayNumber);
+      setAllowInput(true);
     }, slideChangeTime);
     return () => clearTimeout(controlChangeDisplay);
   }, [displayNumber, slideChangeTime]);
