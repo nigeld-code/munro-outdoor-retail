@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Logo from '../UI/Logo/Logo';
 
@@ -10,7 +11,9 @@ const Header = () => {
     <header className={classes.Header}>
       <Navigation />
       <div className={classes.HeaderLogo}>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </div>
     </header>
   );

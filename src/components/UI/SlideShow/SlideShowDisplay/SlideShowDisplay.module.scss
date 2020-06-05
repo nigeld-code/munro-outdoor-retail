@@ -1,0 +1,44 @@
+.SlideShowDisplay {
+  position: relative;
+}
+
+.SlideShowDisplayLast {
+  transform: translateX(+100%);
+}
+
+.SlideShowDisplayNext {
+  transform: translateX(-100%);
+}
+
+.Slide {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.LastDisplay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.CurrentDisplay {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.NextDisplay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(+100%);
+}
+
+.TransitionDisplay {
+  transform: translateX(0);
+}

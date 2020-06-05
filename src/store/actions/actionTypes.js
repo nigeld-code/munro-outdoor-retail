@@ -1,0 +1,2 @@
+// CONFIG
+export const GET_SCREEN_SIZE = 'GET_SCREEN_SIZE';

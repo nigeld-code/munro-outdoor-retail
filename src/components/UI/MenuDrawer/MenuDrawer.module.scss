@@ -6,7 +6,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: map-get($colors, middle-green-yellow);
   padding: 2rem;
   transition: transform 200ms ease;
@@ -21,8 +21,9 @@
   transform: translateX(-100%);
 }
 
-@media (min-width: 500px) {
-  .MenuDrawer {
-    display: none;
-  }
+.CloseMenuDrawer {
+  position: absolute;
+  top: .75rem;
+  right: 1.25rem;
+  cursor: pointer;
 }

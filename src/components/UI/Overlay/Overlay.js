@@ -3,7 +3,12 @@ import React from 'react';
 import classes from './Overlay.module.scss';
 
 const Overlay = props => {
-  return <div className={classes.Overlay} onClick={props.clicked}></div>;
+  const overlayClass = [
+    classes.Overlay,
+    props.showOverlay ? null : classes.Hide
+  ];
+
+  return <div className={overlayClass.join(' ')} onClick={props.clicked}></div>;
 };
 
-export default Overlay;
+export default React.memo(Overlay);

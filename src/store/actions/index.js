@@ -1,0 +1,3 @@
+export {
+  getScreenSize
+} from './config';

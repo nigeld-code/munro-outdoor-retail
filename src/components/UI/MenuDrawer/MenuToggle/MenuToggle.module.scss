@@ -17,9 +17,3 @@
     background-color: map-get($colors, lincoln-green);
   }
 }
-
-@media (min-width: $mobile-width) {
-  .MenuToggle {
-    display: none;
-  }
-}
