@@ -2,8 +2,8 @@ import React from 'react';
 
 import classes from './SlideShowDisplay.module.scss';
 
-const imgsIndexForDisplay = (request, current, length) => {
-  let imgNum = current + request;
+const imgsIndexForDisplay = (num, length) => {
+  let imgNum = num;
   if (imgNum < 0) {
     imgNum = length - 1;
   } else if (imgNum >= length) {
@@ -72,8 +72,7 @@ const SlideShowDisplay = props => {
         {
           imageForSlideShow[
             imgsIndexForDisplay(
-              -1,
-              props.numForDisplay,
+              props.displayNumber,
               imageForSlideShow.length
             )
           ]
@@ -83,7 +82,6 @@ const SlideShowDisplay = props => {
         {
           imageForSlideShow[
             imgsIndexForDisplay(
-              0,
               props.numForDisplay,
               imageForSlideShow.length
             )
@@ -94,8 +92,7 @@ const SlideShowDisplay = props => {
         {
           imageForSlideShow[
             imgsIndexForDisplay(
-              1,
-              props.numForDisplay,
+              props.displayNumber,
               imageForSlideShow.length
             )
           ]
