@@ -5,6 +5,7 @@ import useScreenSize from './hooks/useScreenSize';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
+import Products from './pages/Products/Products';
 
 const App = () => {
   useScreenSize();
@@ -12,11 +13,7 @@ const App = () => {
   return (
     <Layout>
       <Switch>
-        <Route path='/new' exact />
-        <Route path='/men' exact />
-        <Route path='/women' exact />
-        <Route path='/children' exact />
-        <Route path='/offers' exact />
+        <Route path='/products' component={props => <Products {...props} />} />
         <Route path='/' exact component={props => <Home {...props} />} />
         <Redirect to='/' />
       </Switch>

@@ -1,0 +1,34 @@
+@import "../../../style-variables/variables";
+
+.Socials {
+  margin: 0.5rem 0.5rem;
+
+  h2 {
+    margin: 0.25rem 0;
+    color: map-get($colors, middle-green-yellow);
+    font-size: 1.45rem;;
+  }
+}
+
+.SocialsItems {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  & > a {
+    text-decoration: none;
+  }
+}
+
+.SocialsItem {
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.25rem;
+  font-size: 1.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}

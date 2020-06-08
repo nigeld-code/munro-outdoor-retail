@@ -57,31 +57,36 @@ const SlideShowDisplay = props => {
     transitionStyle = {};
   }
 
+  const nextSlideDisplay =
+    slidesForSlideShow[
+      slidesIndexForDisplay(props.displayNumber, slidesForSlideShow.length)
+    ];
+
   return (
     <div
       className={slideShowTransitionClass.join(' ')}
       style={{ ...props.display, ...transitionStyle }}
     >
       <div className={classes.LastDisplay} style={props.display}>
-        {
-          slidesForSlideShow[
-            slidesIndexForDisplay(props.displayNumber, slidesForSlideShow.length)
-          ]
-        }
+        {props.displayNumber < props.numForDisplay ||
+        props.displayNumber === slidesForSlideShow.length - 1
+          ? nextSlideDisplay
+          : null}
       </div>
       <div className={classes.CurrentDisplay} style={props.display}>
         {
           slidesForSlideShow[
-            slidesIndexForDisplay(props.numForDisplay, slidesForSlideShow.length)
+            slidesIndexForDisplay(
+              props.numForDisplay,
+              slidesForSlideShow.length
+            )
           ]
         }
       </div>
       <div className={classes.NextDisplay} style={props.display}>
-        {
-          slidesForSlideShow[
-            slidesIndexForDisplay(props.displayNumber, slidesForSlideShow.length)
-          ]
-        }
+        {props.displayNumber > props.numForDisplay || props.displayNumber === 0
+          ? nextSlideDisplay
+          : null}
       </div>
     </div>
   );

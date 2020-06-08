@@ -1,116 +1,54 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import SlideShow from '../../components/UI/SlideShow/SlideShow';
 import Banner from '../../components/Banner/Banner';
+import * as HomeTiles from './data/HomeTiles/HomeTiles';
 
-// import classes from './Home.module.scss';
-import image1 from '../../assets/images/TestBannerImage1.png';
-import image2 from '../../assets/images/TestBannerImage2.png';
-import image3 from '../../assets/images/TestBannerImage3.png';
-import image4 from '../../assets/images/image4.jpg';
+import HomeBannerTop from './data/HomeBannerTop';
+import {HomeSlideShowSlides, HomeSlideShowDisplay} from './data/HomeSlideShowSlides';
+import HomeBannerBottom from './data/HomeBannerBottom';
 
-const slideShowSlides = [
-  {
-    contents: (
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          objectFit: 'cover',
-          cursor: 'pointer'
-        }}
-        src={image1}
-        alt=''
-      />
-    )
-  },
-  {
-    contents: (
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          objectFit: 'cover',
-          cursor: 'pointer'
-        }}
-        src={image2}
-        alt=''
-      />
-    )
-  },
-  {
-    contents: (
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          objectFit: 'cover',
-          cursor: 'pointer'
-        }}
-        src={image3}
-        alt=''
-      />
-    )
-  },
-  {
-    contents: (
-      <img
-        style={{
-          height: '100%',
-          width: '100%',
-          objectFit: 'cover',
-          cursor: 'pointer'
-        }}
-        src={image4}
-        alt=''
-      />
-    )
-  }
-];
+import classes from './Home.module.scss';
 
 const Home = () => {
+  const screenSize = useSelector(state => state.config.screenSize);
+
+  const homeTileClass =
+    screenSize > 3 ? classes.HomeTilesMedium : classes.HomeTilesSmall;
   return (
     <React.Fragment>
       <SlideShow
-        slides={slideShowSlides}
-        display={{
-          height: '20rem',
-          sizeByScreen: [
-            {
-              screens: [1, 2],
-              height: '10rem'
-            },
-            {
-              screens: [5, 6],
-              height: '25rem'
-            }
-          ]
-        }}
+        slides={HomeSlideShowSlides}
+        display={HomeSlideShowDisplay}
         timings={{ autoSlideChangeTime: 4000, slideChangeTime: 1250 }}
       />
       <Banner
-        contents={[
-          {
-            text: <div>Click &amp; Collect</div>,
-            click: () => console.log('Hello'),
-            minScreen: 2
-          },
-          {
-            text: (
-              <div>
-                <strong>Free</strong> Next Day Delivery over £60
-              </div>
-            )
-          },
-          {
-            text: (
-              <div>
-                <strong>Free</strong> Returns
-              </div>
-            ),
-            minScreen: 1
-          }
-        ]}
+        contents={HomeBannerTop}
+      />
+      <div className={classes.HomeTilesContainer}>
+        <div className={homeTileClass}>
+          <div>
+            <HomeTiles.Tile1 />
+          </div>
+          <div>
+            <HomeTiles.Tile2 />
+          </div>
+        </div>
+        <div className={homeTileClass}>
+          <div>
+            <HomeTiles.Tile3 screenSize={screenSize} />
+          </div>
+          <div>
+            <HomeTiles.Tile4/>
+          </div>
+        </div>
+      </div>
+      <div style={{ textAlign: 'center', lineHeight: '0' }}>
+        <h4>Brands We Love</h4>
+      </div>
+      <Banner
+        contents={HomeBannerBottom}
       />
     </React.Fragment>
   );

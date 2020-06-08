@@ -1,0 +1,47 @@
+@import "../../style-variables/variables";
+
+.Footer {
+  background-color: map-get($colors, charleston-green);
+}
+
+.FooterRow {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.FooterRowLeft {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.FooterLegal {
+  color: map-get($colors, cultured);
+  font-size: 0.65rem;
+
+  p {
+    margin: 0.5rem;
+    margin-top: 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+  a:visited,
+  a:active {
+    color: map-get($colors, cultured);
+  }
+}
+
+.FooterLogo {
+  background-color: map-get($colors, cultured);
+  box-sizing: border-box;
+  height: 3.5rem;
+  width: 6.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 1rem;
+  border-radius: 10px;
+}
