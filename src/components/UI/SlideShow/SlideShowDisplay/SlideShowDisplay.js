@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 import classes from './SlideShowDisplay.module.scss';
 
@@ -12,16 +13,45 @@ const slidesIndexForDisplay = (num, length) => {
   return slideNum;
 };
 
+const slideButtons = ({ buttons, clicked }, screenSize) => {
+  if (!buttons) {
+    return null;
+  }
+  const buttonsArr = buttons.map((button, index) => {
+    if (button.minScreenSize && button.minScreenSize > screenSize) {
+      return null;
+    }
+    return (
+      <button
+        key={`SlideButtons ${index}`}
+        style={button.style}
+        onClick={button.clicked ? button.clicked : clicked}
+      >
+        {button.text}
+      </button>
+    );
+  });
+  return <div className={classes.SlideButtons}>{buttonsArr}</div>;
+};
+
 const SlideShowDisplay = props => {
-  const slidesForSlideShow = [];
-  props.slides &&
-    props.slides.forEach((slide, index) => {
-      slidesForSlideShow.push(
-        <div className={classes.Slide} key={'Slide' + index}>
-          {slide.contents}
-        </div>
-      );
-    });
+  const screenSize = useSelector(state => state.config.screenSize);
+
+  const slidesForSlideShow = useMemo(() => {
+    const slidesForSlideShowArr = [];
+    props.slides &&
+      props.slides.forEach((slide, index) => {
+        slidesForSlideShowArr.push(
+          <div className={classes.Slide} key={'Slide' + index}>
+            <div className={classes.SlideContents} onClick={slide.clicked}>
+              {slide.contents}
+            </div>
+            {slideButtons(slide, screenSize)}
+          </div>
+        );
+      });
+      return slidesForSlideShowArr;
+  }, [screenSize, props.slides]);
 
   let slideShowTransitionClass = [classes.SlideShowDisplay];
   let transitionStyle = {

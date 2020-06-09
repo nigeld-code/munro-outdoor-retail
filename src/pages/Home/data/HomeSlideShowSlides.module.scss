@@ -1,0 +1,52 @@
+@import '../../../style-variables/variables';
+
+.HomeSlide3Logo {
+  position: absolute;
+  height: 40%;
+  top: 10%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.HomeSlide3Text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & > p {
+    display: inline-block;
+    background-color: map-get($colors, middle-green-yellow);
+    color: map-get($colors, charleston-green);
+    padding: 0.25rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .HomeSlide3Logo {
+    position: absolute;
+    height: 40%;
+    top: 10%;
+  }
+
+  .HomeSlide3Text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  
+    & > p {
+      display: inline-block;
+      background-color: map-get($colors, middle-green-yellow);
+      color: map-get($colors, charleston-green);
+      padding: 1rem;
+      border-radius: 15px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+

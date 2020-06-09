@@ -31,4 +31,9 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
+
+  &:hover {
+    color: map-get($colors, lincoln-green);
+    background-color: map-get($colors, cultured);
+  }
 }

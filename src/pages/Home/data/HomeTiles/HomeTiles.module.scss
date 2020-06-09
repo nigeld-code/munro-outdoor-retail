@@ -37,7 +37,7 @@
     border: none;
     border-radius: 15px;
     color: map-get($colors, cultured);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     font-weight: bold;
     outline: none;
     transition: background-color 200ms ease;
@@ -46,5 +46,102 @@
     &:hover {
       background-color: map-get($colors, charleston-green);
     }
+  }
+}
+
+.Tile1ContentByScreen {
+  position: absolute;
+  top: 0;
+  right: 1%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.Tile2ContentByScreen {
+  position: absolute;
+  top: 12%;
+  left: 10%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.Tile3ContentByScreen {
+  position: absolute;
+  top: 10%;
+  left: 22%;
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.Tile4ContentByScreen {
+  position: absolute;
+  top: 8%;
+  left: 25%;
+  height: 55%;
+  object-fit: contain;
+}
+
+@media only screen and (min-width: $small) {
+  .Tile2ContentByScreen {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    height: 55%;
+    object-fit: contain;
+  }
+
+  .Tile3ContentByScreen {
+    position: absolute;
+    top: 10%;
+    left: 26%;
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+
+  .Tile4ContentByScreen {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    height: 80%;
+    object-fit: contain;
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .Tile1ContentByScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 90%;
+    object-fit: contain;
+  }
+
+  .Tile2ContentByScreen {
+    position: absolute;
+    top: 12%;
+    left: 1%;
+    height: 60%;
+    width: 30%;
+    object-fit: contain;
+  }
+
+  .Tile3ContentByScreen {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+  }
+
+  .Tile4ContentByScreen {
+    position: absolute;
+    top: 20%;
+    left: 3%;
+    height: 55%;
+    object-fit: contain;
   }
 }

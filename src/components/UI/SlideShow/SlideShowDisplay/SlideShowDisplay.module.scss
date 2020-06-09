@@ -1,5 +1,8 @@
+@import '../../../../style-variables/variables';
+
 .SlideShowDisplay {
   position: relative;
+  cursor: pointer;
 }
 
 .SlideShowDisplayLast {
@@ -11,6 +14,7 @@
 }
 
 .Slide {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: auto;
@@ -38,4 +42,37 @@
 
 .TransitionDisplay {
   transform: translateX(0);
+}
+
+.SlideContents {
+  height: 100%;
+  width: 100%;
+}
+
+.SlideButtons {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  bottom: 1rem;
+
+  & > button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: map-get($colors, blue-green);
+    color: map-get($colors, cultured);
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid map-get($colors, blue-green);
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      background-color: map-get($colors, cultured);
+      color: map-get($colors, blue-green);
+    }
+  }
 }

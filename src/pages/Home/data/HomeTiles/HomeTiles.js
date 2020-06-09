@@ -1,10 +1,13 @@
 import React from 'react';
 
-import Tile1Image from '../../../../assets/images/TileImages/Tile1Image.jpg';
-import Tile2Image from '../../../../assets/images/TileImages/Tile2Image.jpg';
+import Tile1Image from '../../../../assets/images/TileImages/Tile1Image.png';
+import Tile1Contents from '../../../../assets/images/TileImages/Tile1Contents.png';
+import Tile2Image from '../../../../assets/images/TileImages/Tile2Image.png';
+import Tile2Contents from '../../../../assets/images/TileImages/Tile2Contents.png';
 import Tile3Image from '../../../../assets/images/TileImages/Tile3Image.png';
 import Tile3Contents from '../../../../assets/images/TileImages/Tile3Contents.png';
-import Tile4Image from '../../../../assets/images/TileImages/Tile4Image.jpg';
+import Tile4Image from '../../../../assets/images/TileImages/Tile4Image.png';
+import Tile4Contents from '../../../../assets/images/TileImages/Tile4Contents.png';
 
 import classes from './HomeTiles.module.scss';
 
@@ -13,8 +16,11 @@ export const Tile1 = () => {
     <div className={classes.HomeTiles}>
       <img src={Tile1Image} alt='' />
       <div className={classes.Tile}>
-        <h3>Essential Walking Equipment</h3>
-        <p>upto 1/3 off</p>
+        <img
+          className={classes.Tile1ContentByScreen}
+          src={Tile1Contents}
+          alt='Shop Essential Walking Equipment'
+        />
         <button>Shop Essentials</button>
       </div>
     </div>
@@ -26,21 +32,15 @@ export const Tile2 = () => {
     <div className={classes.HomeTiles}>
       <img src={Tile2Image} alt='' />
       <div className={classes.Tile}>
-        <h3>Tents and Camping Sale</h3>
+      <img
+          className={classes.Tile2ContentByScreen}
+          src={Tile2Contents}
+          alt='Shop Tents &amp; Camping'
+        />
         <button>Shop Tents and Camping</button>
       </div>
     </div>
   );
-};
-
-const tile3ContentStyle = {
-  position: 'absolute',
-  top: '0',
-  left: '0',
-  width: '50%',
-  height: '50%',
-  objectFit: 'contain',
-  transform: 'translateY(20%) translateX(30%)'
 };
 
 export const Tile3 = () => {
@@ -49,7 +49,7 @@ export const Tile3 = () => {
       <img src={Tile3Image} alt='' />
       <div className={classes.Tile}>
         <img
-          style={{...tile3ContentStyle, }}
+          className={classes.Tile3ContentByScreen}
           src={Tile3Contents}
           alt='Shop the New Ascend Range'
         />
@@ -64,7 +64,11 @@ export const Tile4 = () => {
     <div className={classes.HomeTiles}>
       <img src={Tile4Image} alt='' />
       <div className={classes.Tile}>
-        <h3>Up to 40% off Footwear</h3>
+      <img
+          className={classes.Tile4ContentByScreen}
+          src={Tile4Contents}
+          alt='Shop Footware'
+        />
         <button>Shop Footwear</button>
       </div>
     </div>
