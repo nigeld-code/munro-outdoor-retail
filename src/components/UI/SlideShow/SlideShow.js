@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import useTouchSwipe from '../../../hooks/useTouchSwipe';
-
+import SwipeEvent from '../../../hoc/TouchEvents/SwipeEvent';
 import SlideShowDisplay from './SlideShowDisplay/SlideShowDisplay';
 import SlideShowControls from './SlideShowControls/SlideShowControls';
 
@@ -43,8 +42,6 @@ const SlideShow = props => {
   const [numForDisplay, setNumForDisplay] = useState(0);
   const [allowInput, setAllowInput] = useState(true);
   const screenSize = useSelector(state => state.config.screenSize);
-  const touchScreenRespond = useTouchSwipe();
-  const slideShowRef = useRef();
 
   const displayStyle = getDisplayStyle(display);
 
@@ -104,39 +101,30 @@ const SlideShow = props => {
     return () => clearInterval(autoChangeDisplay);
   }, [numForDisplay, props.slides.length, autoSlideChangeTime]);
 
-  useEffect(() => {
-    touchScreenRespond(
-      slideShowRef,
-      {
-        left: () => slideshowNavHandler('next'),
-        right: () => slideshowNavHandler('last')
-      },
-      {
-        isPreventDefault: false,
-        minSwipeSpeed: 50
-      }
-    );
-  }, [touchScreenRespond, slideshowNavHandler]);
-
   return (
-    <div
-      ref={slideShowRef}
-      className={classes.SlideShow}
-      style={display ? displayStyle[screenSize] : null}
+    <SwipeEvent
+      swipeDistance={20}
+      left={() => slideshowNavHandler('next')}
+      right={() => slideshowNavHandler('last')}
     >
-      <SlideShowDisplay
-        slides={props.slides}
-        displayNumber={displayNumber}
-        numForDisplay={numForDisplay}
-        slideChangeTime={slideChangeTime}
-        display={display ? displayStyle[screenSize] : null}
-      />
-      <SlideShowControls
-        slides={props.slides}
-        displayNumber={displayNumber}
-        slideshowNav={slideshowNavHandler}
-      />
-    </div>
+      <div
+        className={classes.SlideShow}
+        style={display ? displayStyle[screenSize] : null}
+      >
+        <SlideShowDisplay
+          slides={props.slides}
+          displayNumber={displayNumber}
+          numForDisplay={numForDisplay}
+          slideChangeTime={slideChangeTime}
+          display={display ? displayStyle[screenSize] : null}
+        />
+        <SlideShowControls
+          slides={props.slides}
+          displayNumber={displayNumber}
+          slideshowNav={slideshowNavHandler}
+        />
+      </div>
+    </SwipeEvent>
   );
 };
 

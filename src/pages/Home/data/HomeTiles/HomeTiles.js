@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Tile1Image from '../../../../assets/images/TileImages/Tile1Image.png';
 import Tile1Contents from '../../../../assets/images/TileImages/Tile1Contents.png';
@@ -12,6 +13,7 @@ import Tile4Contents from '../../../../assets/images/TileImages/Tile4Contents.pn
 import classes from './HomeTiles.module.scss';
 
 export const Tile1 = () => {
+  const history = useHistory();
   return (
     <div className={classes.HomeTiles}>
       <img src={Tile1Image} alt='' />
@@ -21,29 +23,35 @@ export const Tile1 = () => {
           src={Tile1Contents}
           alt='Shop Essential Walking Equipment'
         />
-        <button>Shop Essentials</button>
+        <button onClick={() => history.push('/products/_/essentials')}>
+          Shop Essentials
+        </button>
       </div>
     </div>
   );
 };
 
 export const Tile2 = () => {
+  const history = useHistory();
   return (
     <div className={classes.HomeTiles}>
       <img src={Tile2Image} alt='' />
       <div className={classes.Tile}>
-      <img
+        <img
           className={classes.Tile2ContentByScreen}
           src={Tile2Contents}
           alt='Shop Tents &amp; Camping'
         />
-        <button>Shop Tents and Camping</button>
+        <button onClick={() => history.push('/products/_/tents_and_camping_sale')}>
+          Shop Tents and Camping
+        </button>
       </div>
     </div>
   );
 };
 
 export const Tile3 = () => {
+  const history = useHistory();
   return (
     <div className={classes.HomeTiles}>
       <img src={Tile3Image} alt='' />
@@ -53,23 +61,28 @@ export const Tile3 = () => {
           src={Tile3Contents}
           alt='Shop the New Ascend Range'
         />
-        <button>Shop Ascend</button>
+        <button onClick={() => history.push('/products/_/ascend')}>
+          Shop Ascend
+        </button>
       </div>
     </div>
   );
 };
 
 export const Tile4 = () => {
+  const history = useHistory();
   return (
     <div className={classes.HomeTiles}>
       <img src={Tile4Image} alt='' />
       <div className={classes.Tile}>
-      <img
+        <img
           className={classes.Tile4ContentByScreen}
           src={Tile4Contents}
           alt='Shop Footware'
         />
-        <button>Shop Footwear</button>
+        <button onClick={() => history.push('/products/footwear')}>
+          Shop Footwear
+        </button>
       </div>
     </div>
   );

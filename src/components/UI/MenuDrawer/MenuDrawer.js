@@ -1,23 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-
-import useTouchSwipe from '../../../hooks/useTouchSwipe';
+import React from 'react';
 
 import Overlay from '../../UI/Overlay/Overlay';
 
 import classes from './MenuDrawer.module.scss';
+import SwipeEvent from '../../../hoc/TouchEvents/SwipeEvent';
 
 const MenuDrawer = props => {
   const { close } = props;
-  const touchSwipeRespond = useTouchSwipe();
-  const drawerRef = useRef();
-
-  useEffect(() => {
-    touchSwipeRespond(
-      drawerRef,
-      { left: () => close() },
-      { isPreventDefault: false }
-    );
-  }, [touchSwipeRespond, close]);
 
   let classList = [classes.MenuDrawer, classes.Close];
   if (props.isOpen) {
@@ -27,12 +16,14 @@ const MenuDrawer = props => {
   return (
     <React.Fragment>
       {props.isOpen && <Overlay showOverlay={props.isOpen} clicked={close} />}
-      <div ref={drawerRef} className={classList.join(' ')}>
-        <div className={classes.CloseMenuDrawer} onClick={close}>
-          X
+      <SwipeEvent swipeDistance={10} left={close}>
+        <div className={classList.join(' ')}>
+          <div className={classes.CloseMenuDrawer} onClick={close}>
+            X
+          </div>
+          {props.children}
         </div>
-        {props.children}
-      </div>
+      </SwipeEvent>
     </React.Fragment>
   );
 };

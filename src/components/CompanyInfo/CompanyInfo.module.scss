@@ -25,6 +25,10 @@
       width: auto;
       white-space: nowrap;
       font-size: 0.85rem;
+
+      &:hover {
+        color: map-get($colors, lincoln-green);
+      }
     }
 
     li:nth-of-type(1) {

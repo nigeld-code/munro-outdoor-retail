@@ -1,0 +1,67 @@
+@import "../../../style-variables/variables";
+
+.FirstOrderBanner {
+  background-color: map-get($colors, lincoln-green);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.FirstOrderBannerContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.FirstOrderBannerLogo {
+  display: none;
+}
+
+.FirstOrderBannerText {
+  & > p {
+    background-color: map-get($colors, middle-green-yellow);
+    color: map-get($colors, charleston-green);
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: $small) {  
+  .FirstOrderBannerLogo {
+    display: block;
+    width: 6rem;
+    margin: 0.5rem;
+    padding: 0.25rem;
+  }
+  
+  .FirstOrderBannerText {
+    & > p {
+      padding: 0.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .FirstOrderBanner {
+    padding: 0.5rem;
+  }
+  
+  .FirstOrderBannerLogo {
+    width: 8rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .FirstOrderBannerText {
+    & > p {
+      padding: 0.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+  }
+}

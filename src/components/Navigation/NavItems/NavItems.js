@@ -3,11 +3,12 @@ import React from 'react';
 import NavItem from './NavItem/NavItem';
 
 const navItemList = [
-  { to: '/products/new', label: 'New' },
-  { to: '/products/men', label: 'Men' },
-  { to: '/products/women', label: 'Women' },
-  { to: '/products/children', label: 'Children' },
-  { to: '/products/offers', label: 'Offers' }
+  { to: '/products/_/new', label: 'New' },
+  { to: '/products/_/men', label: 'Men' },
+  { to: '/products/_/women', label: 'Women' },
+  { to: '/products/_/children', label: 'Children' },
+  { to: '/products/_/Equipment', label: 'Equipment' },
+  { to: '/products/_/Camping', label: 'Camping' }
 ];
 
 const NavItems = props => {

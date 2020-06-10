@@ -1,3 +1,57 @@
+@import "../../style-variables/variables";
+
 .Products {
-  
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0.5rem 0 1rem 0;
+  box-sizing: border-box;
+}
+
+.ProductsFilter {
+  border: 1px solid black;
+  margin: 0.25rem 0.25rem 0.5rem 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.ProductsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.ProductsItem {
+  width: 100%;
+  height: 20rem;
+  border: 1px solid black;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: $small) {
+  .ProductsItem {
+    width: 50%;
+    height: 20rem;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .ProductsItem {
+    width: 33.3%;
+    height: 20rem;
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .ProductsItem {
+    width: 25%;
+    height: 20rem;
+    margin: 0;
+  }
 }

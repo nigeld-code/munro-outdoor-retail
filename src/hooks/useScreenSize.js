@@ -37,12 +37,13 @@ const useScreenSize = () => {
       return false;
     }
 
-    const resizeHandler = () => {
+    const resizeHandler = event => {
+      event.preventDefault();
       setScreenSize(getSize());
     };
 
-    window.addEventListener('resize', debounce(resizeHandler));
-    return () => window.removeEventListener('resize', debounce(resizeHandler));
+    window.addEventListener('resize', event => debounce(resizeHandler(event)));
+    return () => window.removeEventListener('resize', event => debounce(resizeHandler(event)));
   }, []);
 
   useEffect(() => {

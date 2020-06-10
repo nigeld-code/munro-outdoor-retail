@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-
-import useScreenSize from './hooks/useScreenSize';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
 
-const App = () => {
-  useScreenSize();
+const App = ({ location }) => {
+  const { pathname } = location;
+  useEffect(() => {
+    try {
+      window.scroll({
+        top: 0,
+        left: 0
+      });
+    } catch {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return (
     <Layout>

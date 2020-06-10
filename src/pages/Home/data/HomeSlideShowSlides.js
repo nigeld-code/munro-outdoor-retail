@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import image1 from '../../../assets/images/HomeSlides/HomeSlide1.jpg';
 import image2 from '../../../assets/images/HomeSlides/HomeSlide2.jpg';
@@ -22,7 +23,9 @@ export const HomeSlideShowDisplay = {
   ]
 };
 
-export const HomeSlideShowSlides = props => {
+export const HomeSlideShowSlides = () => {
+  const history = useHistory();
+
   return [
     {
       contents: (
@@ -40,7 +43,7 @@ export const HomeSlideShowSlides = props => {
         </React.Fragment>
       ),
       clicked: () => {
-        props.history.push('/products/waterproof');
+        history.push('/products/waterproof');
       },
       buttons: [
         {
@@ -64,7 +67,7 @@ export const HomeSlideShowSlides = props => {
         </React.Fragment>
       ),
       clicked: () => {
-        props.history.push('/products/sale');
+        history.push('/products/_/sale');
       },
       buttons: [
         {
@@ -100,7 +103,7 @@ export const HomeSlideShowSlides = props => {
         </React.Fragment>
       ),
       clicked: () => {
-        props.history.push('/products');
+        history.push('/products');
       },
       buttons: [
         {
@@ -109,7 +112,7 @@ export const HomeSlideShowSlides = props => {
         {
           text: 'View Terms',
           clicked: () => {
-            props.history.push('/terms/first-online-order-discount');
+            history.push('/terms/first-online-order-discount');
           }
         }
       ]
@@ -130,7 +133,7 @@ export const HomeSlideShowSlides = props => {
         </React.Fragment>
       ),
       clicked: () => {
-        props.history.push('/products/maps');
+        history.push('/products/maps');
       },
       buttons: [
         {
@@ -165,41 +168,41 @@ export const HomeSlideShowSlides = props => {
         </React.Fragment>
       ),
       clicked: () => {
-        props.history.push('/products/clearance');
+        history.push('/products/_/clearance');
       },
       buttons: [
         {
           text: 'Clothing Clearance',
           clicked: () => {
-            props.history.push('/products/clothing/clearance');
+            history.push('/products/clothing/clearance');
           },
           minScreenSize: 2
         },
         {
           text: 'Footwear Clearance',
           clicked: () => {
-            props.history.push('/products/footwear/clearance');
+            history.push('/products/footwear/clearance');
           },
           minScreenSize: 4
         },
         {
           text: 'Equipment Clearance',
           clicked: () => {
-            props.history.push('/products/equipment/clearance');
+            history.push('/products/equipment/clearance');
           },
           minScreenSize: 5
         },
         {
           text: 'Camping Clearance',
           clicked: () => {
-            props.history.push('/products/camping/clearance');
+            history.push('/products/camping/clearance');
           },
           minScreenSize: 6
         },
         {
           text: 'Shop Clearance',
           clicked: () => {
-            props.history.push('/products/clearance');
+            history.push('/products/_/clearance');
           }
         }
       ]

@@ -16,6 +16,7 @@ const Banner = props => {
         <div
           key={`Banner ${index}`}
           onClick={() => bannerItem.click && bannerItem.click()}
+          style={props.clicked ? { cursor: 'pointer' } : null}
           className={[
             classes.BannerItem,
             bannerItem.click ? classes.BannerLink : classes.BannerText
@@ -25,7 +26,18 @@ const Banner = props => {
         </div>
       );
     });
-  return <div className={classes.Banner}>{bannerItems}</div>;
+  return (
+    <div
+      className={[
+        classes.Banner,
+        props.className ? props.className : null
+      ].join(' ')}
+      onClick={props.clicked ? props.clicked : null}
+      style={props.clicked ? { cursor: 'pointer' } : null}
+    >
+      {bannerItems}
+    </div>
+  );
 };
 
 export default React.memo(Banner);

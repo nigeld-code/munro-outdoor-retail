@@ -8,6 +8,14 @@ import NavItems from './NavItems/NavItems';
 
 import classes from './Navigation.module.scss';
 
+const overlayScrollEffect = menuOpen => {
+  if (menuOpen) {
+    document.body.style.position = 'fixed';
+  } else {
+    document.body.style.position = '';
+  }
+};
+
 const Navigation = props => {
   const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
   const screenSize = useSelector(state => state.config.screenSize);
@@ -15,10 +23,12 @@ const Navigation = props => {
 
   const menuToggleClickHandler = () => {
     setIsMenuDrawerOpen(!isMenuDrawerOpen);
+    overlayScrollEffect(!isMenuDrawerOpen);
   };
 
   useEffect(() => {
     setIsMenuDrawerOpen(false);
+    overlayScrollEffect(false);
   }, [location]);
 
   let nav = (

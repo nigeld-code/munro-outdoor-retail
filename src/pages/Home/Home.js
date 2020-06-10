@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 import SlideShow from '../../components/UI/SlideShow/SlideShow';
@@ -14,19 +14,15 @@ import HomeBannerBottom from './data/HomeBannerBottom';
 
 import classes from './Home.module.scss';
 
-const Home = props => {
+const Home = () => {
   const screenSize = useSelector(state => state.config.screenSize);
-
-  const homeSlideShowSlides = useMemo(() => {
-    return HomeSlideShowSlides(props);
-  }, [props]);
 
   const homeTileClass =
     screenSize > 3 ? classes.HomeTilesMedium : classes.HomeTilesSmall;
   return (
     <React.Fragment>
       <SlideShow
-        slides={homeSlideShowSlides}
+        slides={HomeSlideShowSlides()}
         display={HomeSlideShowDisplay}
         timings={{ autoSlideChangeTime: 4500, slideChangeTime: 800 }}
       />
