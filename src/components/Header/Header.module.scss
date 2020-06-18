@@ -1,18 +1,88 @@
 @import "../../style-variables//variables";
 
-.Header {
-  height: $header-height;
+.HeaderNav {
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
   align-items: center;
+  padding: 0.75rem 0.25rem;
+  box-sizing: border-box;
+}
+
+.HeaderRow {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .HeaderLogo {
-  position: relative;
   height: $header-height;
   width: 7rem;
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.4rem 0 0.4rem;
   box-sizing: border-box;
+}
+
+.HeaderSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 300px;
+  padding: 0.5rem 0;
+  background-color: map-get($colors, lincoln-green);
+
+  & > input[type="text"] {
+    width: 80%;
+    padding: 0.25rem 0.5rem;
+    background-color: map-get($colors, cultured);
+    border: 3px solid map-get($colors, middle-green-yellow);
+    border-radius: 10px 0 0 10px;
+    color: map-get($colors, charleston-green);
+    font-family: "roboto";
+    font-size: 1.1rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  & > button {
+    height: 2.2rem;
+    padding: 0.25rem 0.4rem 0.25rem 0.25rem;
+    color: map-get($colors, lincoln-green);
+    background-color: map-get($colors, middle-green-yellow);
+    outline: none;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      color: map-get($colors, charleston-green);
+    }
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .HeaderRow {
+    justify-content: center;
+  }
+  
+  .HeaderLogo {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .HeaderSearch {
+    width: 40%;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0 0 15px 15px;
+  
+    & > input[type="text"] {
+      width: 100%;
+      padding: 0.25rem 0.5rem;
+    }
+  }
 }

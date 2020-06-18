@@ -19,14 +19,6 @@ const getSize = () => {
   };
 };
 
-const debounce = func => {
-  let inDebounce;
-  return () => {
-    clearTimeout(inDebounce);
-    inDebounce = setTimeout(() => func(), 150);
-  };
-};
-
 const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState(() => getSize());
   const [screenSizeInt, setScreenSizeInt] = useState(0);
@@ -42,8 +34,9 @@ const useScreenSize = () => {
       setScreenSize(getSize());
     };
 
-    window.addEventListener('resize', event => debounce(resizeHandler(event)));
-    return () => window.removeEventListener('resize', event => debounce(resizeHandler(event)));
+    window.addEventListener('resize', event => resizeHandler(event));
+    return () =>
+      window.removeEventListener('resize', event => resizeHandler(event));
   }, []);
 
   useEffect(() => {

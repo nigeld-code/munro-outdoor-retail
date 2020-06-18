@@ -1,12 +1,22 @@
 import React, { useEffect } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { accountCheckAuthState } from './store/actions/';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
 import Products from './pages/Products/Products';
+import Account from './pages/Account/Account';
 
 const App = ({ location }) => {
+  const dispatch = useDispatch();
   const { pathname } = location;
+
+  useEffect(() => {
+    dispatch(accountCheckAuthState());
+  }, [dispatch]);
+
   useEffect(() => {
     try {
       window.scroll({
@@ -22,6 +32,15 @@ const App = ({ location }) => {
     <Layout>
       <Switch>
         <Route path='/products' component={props => <Products {...props} />} />
+        <Route
+          path='/account'
+          exact
+          component={props => <Account {...props} />}
+        />
+        <Route
+          path='/passwordReset/:userId/:resetToken'
+          component={props => <Account isReset {...props} />}
+        />
         <Route path='/' exact component={props => <Home {...props} />} />
         <Redirect to='/' />
       </Switch>

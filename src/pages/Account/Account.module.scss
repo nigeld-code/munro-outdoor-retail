@@ -1,0 +1,165 @@
+@import "../../style-variables/variables";
+
+.AccountLogin {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: map-get($colors, lincoln-green);
+
+  & > form {
+    width: 290px;
+    position: relative;
+    margin: 0.1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 15px;
+    background-color: map-get($colors, middle-green-yellow);
+    color: map-get($colors, lincoln-green);
+    box-sizing: border-box;
+
+    & > h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    & > button {
+      width: 100%;
+      padding: 0.5rem;
+      display: block;
+      margin: 1rem auto;
+      background-color: map-get($colors, lincoln-green);
+      border: none;
+      border-radius: 5px;
+      color: map-get($colors, cultured);
+      font-family: "rubik";
+      font-size: 1.1rem;
+      outline: none;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background-color 400ms ease, color 500ms ease, border-color 400ms ease;
+
+      &:hover,
+      &:active {
+        background-color: map-get($colors, cultured);
+        color: map-get($colors, lincoln-green);
+        box-shadow: 0 0 2px 2px map-get($colors, lincoln-green);
+      }
+    }
+  }
+}
+
+.AccountLoginInputField {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  justify-content: center;
+
+  & > label {
+    padding: 0.5rem 0.25rem;
+  }
+
+  & > input {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding: 0.5rem 0.75rem;
+    background-color: map-get($colors, cultured);
+    color: map-get($colors, charleston-green);
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "rubik";
+    font-size: 1.1rem;
+
+    &:focus {
+      box-shadow: 0 0 2px 2px map-get($colors, lincoln-green);
+    }
+  }
+}
+
+.AccountLoginOr {
+  position: absolute;
+  bottom: -1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: map-get($colors, charleston-green);
+  color: map-get($colors, cultured);
+
+  & > span {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+}
+
+.AccountLoginForgottenPassword {
+  text-align: right;
+
+  & > button {
+    background-color: transparent;
+    border: none;
+    color: map-get($colors, lincoln-green);
+    padding: 0 0.25rem;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.AccountLoginRegisterSwitch {
+  width: 290px;
+  margin: 0.75rem 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 15px;
+  background-color: map-get($colors, middle-green-yellow);
+  color: map-get($colors, lincoln-green);
+  box-sizing: border-box;
+
+  & > button {
+    width: 100%;
+    padding: 0.5rem;
+    display: block;
+    margin: 0.25rem auto;
+    margin-top: 0.5rem;
+    background-color: map-get($colors, lincoln-green);
+    border: none;
+    border-radius: 5px;
+    color: map-get($colors, cultured);
+    font-family: "rubik";
+    font-size: 1.1rem;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background-color 400ms ease, color 500ms ease, border-color 400ms ease;
+
+    &:hover,
+    &:active {
+      background-color: map-get($colors, cultured);
+      color: map-get($colors, lincoln-green);
+      box-shadow: 0 0 2px 2px map-get($colors, lincoln-green);
+    }
+  }
+}
+
+.AccountLoginErrorInput {
+  color: map-get($colors, error) !important;
+
+  &:focus {
+    color: map-get($colors, charleston-green) !important;
+  }
+}
+
+.AccountLoginErrorText {
+  width: 100%;
+  text-align: right;
+  color: map-get($colors, error);
+}

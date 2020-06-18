@@ -1,0 +1,49 @@
+@import "../../../../style-variables/variables";
+
+.HeaderBasket {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: map-get($colors, lincoln-green);
+  font-size: 0.8rem;
+  cursor: pointer;
+
+  & > i {
+    display: none;
+    font-size: 1rem;
+    margin-top: 0.2rem;
+  }
+
+  & > p {
+    margin: 0.25rem;
+    & > span {
+      font-size: 0.7rem;
+    }
+  }
+}
+
+@media only screen and (min-width: $xsmall) {
+  .HeaderBasket {
+    & > i {
+      display: inline;
+    }
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .HeaderBasket {
+    font-size: 0.9rem;
+
+    & > i {
+      display: inline;
+      font-size: 1.2rem;
+    }
+
+    & > p {
+      & > span {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

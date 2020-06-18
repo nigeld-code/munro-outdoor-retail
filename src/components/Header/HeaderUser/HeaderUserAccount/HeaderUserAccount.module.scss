@@ -1,0 +1,16 @@
+@import "../../../../style-variables/variables";
+
+.HeaderUserAccount {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.HeaderUserAccountButton {
+  font-size: 0.7rem;
+  color: map-get($colors, lincoln-green);
+
+  &:hover {
+    color: map-get($colors, charleston-green);
+    text-decoration: underline;
+  }
+}
