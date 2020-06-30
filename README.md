@@ -1,3 +1,12 @@
+## Welcome to Munro Outdoor Retail
+
+This project is the Frontend for my fictional Retail business.<br />
+Please find the Backend in my other repo - [munro-outdoor-retail-backend](https://github.com/nigeld-code/munro-outdoor-retail-backend).
+
+Enjoy!
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

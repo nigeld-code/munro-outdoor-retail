@@ -31,7 +31,14 @@ const App = ({ location }) => {
   return (
     <Layout>
       <Switch>
-        <Route path='/products' component={props => <Products {...props} />} />
+        <Route
+          path='/products/:category/:selection'
+          component={props => <Products {...props} />}
+        />
+        <Route
+          path='/products/:category'
+          component={props => <Products {...props} />}
+        />
         <Route
           path='/account'
           exact
