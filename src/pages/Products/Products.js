@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import useLoadProducts from '../../hooks/useLoadProducts';
 
 import Banner from '../../components/Banner/Banner';
+import Breadcrumbs from '../../components/UI/Breadcrumbs/Breadcrumbs';
 
 import productsTopBanner from './data/productsTopBanner';
 
@@ -16,7 +17,7 @@ const Products = props => {
 
   const history = useHistory();
 
-  const products = useLoadProducts(category, selection);
+  const { products, breadcrumbs } = useLoadProducts(category, selection);
 
   const productsFilter = (
     <aside className={classes.ProductsFilter}>Refine your search</aside>
@@ -29,7 +30,9 @@ const Products = props => {
         <article
           key={'Product' + index}
           className={classes.ProductsItem}
-          onClick={() => {history.push(`/product/${product.productSku}`)}}
+          onClick={() => {
+            history.push(`/product/${product.productSku}`);
+          }}
         >
           {product.productImages && product.productImages.length ? (
             <img
@@ -67,6 +70,7 @@ const Products = props => {
         contents={productsTopBanner.contents}
         clicked={() => props.history.push('/terms/first-online-order-discount')}
       />
+      {category !== '_' ? <Breadcrumbs breadcrumbs={breadcrumbs} /> : null}
       <div className={classes.Products}>
         {productsFilter}
         <section className={classes.ProductsContainer}>
