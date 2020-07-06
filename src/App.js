@@ -6,6 +6,7 @@ import { accountCheckAuthState } from './store/actions/';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
+import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Account from './pages/Account/Account';
 
@@ -31,6 +32,10 @@ const App = ({ location }) => {
   return (
     <Layout>
       <Switch>
+        <Route
+          path='/product/:sku'
+          component={props => <Product {...props} />}
+        />
         <Route
           path='/products/:category/:selection'
           component={props => <Products {...props} />}

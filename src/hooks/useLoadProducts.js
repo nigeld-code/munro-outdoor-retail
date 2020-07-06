@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { productAxios } from '../axios';
+import { productsAxios } from '../axios';
 
 const useLoadProducts = (category, selection) => {
   const [products, setProducts] = useState();
@@ -8,7 +8,7 @@ const useLoadProducts = (category, selection) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await productAxios.get(`${category}/${selection}`);
+        const response = await productsAxios.get(`${category}/${selection}`);
         setProducts(response.data.products);
       } catch (err) {
         console.log('err', err);

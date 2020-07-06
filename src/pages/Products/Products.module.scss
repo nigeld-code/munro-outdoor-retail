@@ -34,14 +34,50 @@
   padding: 0.5rem;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  font-family: "roboto";
   box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    background-color: map-get($colors, product-select);
+    border-radius: 10px;
+  }
 }
 
-.ProductImage {
-  width: 80%;
+.ProductsItemImage {
+  width: 90%;
   max-width: 300px;
+}
+
+.ProductsItemBrand {
+  width: 85%;
+  margin: 0;
+  padding: 0;
+  margin-top: 0.3rem;
+}
+
+.ProductsItemInfo {
+  width: 85%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+}
+
+.ProductsItemName {
+  max-width: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.ProductsItemPrice {
+  & > p {
+    margin: 0;
+    padding: 0.25rem;
+  }
 }
 
 @media only screen and (min-width: $small) {

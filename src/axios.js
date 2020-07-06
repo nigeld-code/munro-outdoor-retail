@@ -6,6 +6,10 @@ export const authAxios = axios.create({
   baseURL: API_URL + 'auth/'
 });
 
-export const productAxios = axios.create({
+export const productsAxios = axios.create({
   baseURL: API_URL + 'products/'
+});
+
+export const productAxios = axios.create({
+  baseURL: API_URL + 'product/'
 });

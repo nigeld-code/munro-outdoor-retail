@@ -4,11 +4,11 @@ import NavItem from './NavItem/NavItem';
 
 const navItemList = [
   { to: '/products/_/new', label: 'New' },
-  { to: '/products/_/men', label: 'Men' },
-  { to: '/products/_/women', label: 'Women' },
-  { to: '/products/_/children', label: 'Children' },
-  { to: '/products/_/Equipment', label: 'Equipment' },
-  { to: '/products/_/Camping', label: 'Camping' }
+  { to: '/products/5efdd1a1eb021732f01c125f', label: 'Men' },
+  { to: '/products/5efdd1a5eb021732f01c1260', label: 'Women' },
+  { to: '/products/5efdd1afeb021732f01c1261', label: 'Children' },
+  { to: '/products/5efdd1c4eb021732f01c1262', label: 'Equipment' },
+  { to: '/products/5efdd1cceb021732f01c1263', label: 'Camping' }
 ];
 
 const NavItems = props => {

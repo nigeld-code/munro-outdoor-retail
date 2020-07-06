@@ -1,0 +1,30 @@
+@import "../../../style-variables/variables";
+
+.Breadcrumbs {
+  margin-left: 6%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-bottom: 0.75rem;
+}
+
+.BreadcrumbsArrow {
+  margin: 0 0.5rem;
+  padding-top: 0.15rem; 
+  font-size: 0.6rem;
+  color: map-get($colors, middle-green-yellow);
+}
+
+.BreadcrumbsTitle {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: map-get($colors, lincoln-green);
+  cursor: pointer;
+}
+
+.BreadcrumbsBorder {
+  margin: 0 auto;
+  width: 90%;
+  background-color: map-get($colors, charleston-green);
+}
