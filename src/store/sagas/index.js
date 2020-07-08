@@ -1,6 +1,7 @@
 import { takeEvery, all } from 'redux-saga/effects';
 
 import * as actionTypes from '../actions/actionTypes';
+
 import {
   checkAuthTimeoutSaga,
   loginSaga,
@@ -11,6 +12,8 @@ import {
   checkAuthStateSaga
 } from './auth';
 
+import { initialBasketSaga, addToBasketSaga, clearBasketSaga } from './basket';
+
 export function* watchAuth() {
   yield all([
     takeEvery(actionTypes.ACCOUNT_CHECK_AUTH_TIMEOUT, checkAuthTimeoutSaga),
@@ -20,5 +23,13 @@ export function* watchAuth() {
     takeEvery(actionTypes.ACCOUNT_FORGOTTEN_PASSWORD, forgottenPasswordSaga),
     takeEvery(actionTypes.ACCOUNT_RESET_PASSWORD, resetPasswordSaga),
     takeEvery(actionTypes.ACCOUNT_CHECK_STATE, checkAuthStateSaga)
+  ]);
+}
+
+export function* watchBasket() {
+  yield all([
+    takeEvery(actionTypes.INITIAL_BASKET, initialBasketSaga),
+    takeEvery(actionTypes.ADD_TO_BASKET, addToBasketSaga),
+    takeEvery(actionTypes.CLEAR_BASKET, clearBasketSaga)
   ]);
 }

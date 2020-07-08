@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { accountCheckAuthState } from './store/actions/';
+import { accountCheckAuthState, initialBasket } from './store/actions/';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
+import Basket from './pages/Basket/Basket';
 import Account from './pages/Account/Account';
 
 const App = ({ location }) => {
@@ -16,6 +17,7 @@ const App = ({ location }) => {
 
   useEffect(() => {
     dispatch(accountCheckAuthState());
+    dispatch(initialBasket());
   }, [dispatch]);
 
   useEffect(() => {
@@ -48,6 +50,11 @@ const App = ({ location }) => {
           path='/account'
           exact
           component={props => <Account {...props} />}
+        />
+        <Route
+          path='/basket'
+          exact
+          component={props => <Basket {...props} />}
         />
         <Route
           path='/passwordReset/:userId/:resetToken'

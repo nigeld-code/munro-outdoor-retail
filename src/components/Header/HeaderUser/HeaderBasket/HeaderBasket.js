@@ -1,15 +1,33 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 import classes from './HeaderBasket.module.scss';
 
-const HeaderBasket = props => {
+const HeaderBasket = () => {
+  const basketQty = useSelector(state => {
+    let basketQtyCount = 0;
+    state.basket.basket.forEach(item => {
+      basketQtyCount += item.qty;
+    });
+    return basketQtyCount;
+  });
+
+  const basketTotal = useSelector(state => state.basket.totalPrice);
+
+  const history = useHistory();
+
   return (
-    <div className={classes.HeaderBasket}>
+    <div
+      className={classes.HeaderBasket}
+      onClick={() => history.push('/basket')}
+    >
       <i className='nld-shopping-basket'></i>
       <p>
-        {props.basket ? `Basket` : `Basket is empty`}
-        <span>{props.basket ? ` (${props.basket})` : null}</span>
-        <span>{props.total ? ` ${props.total}` : null}</span>
+        {basketQty ? `Basket` : `Basket is empty`}
+        <span>{basketQty ? ` (${basketQty})` : null}</span>
+        <span>{basketTotal ? ` £${basketTotal}` : null}</span>
       </p>
     </div>
   );

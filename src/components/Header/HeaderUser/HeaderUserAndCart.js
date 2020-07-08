@@ -9,7 +9,7 @@ const HeaderUserAndCart = () => {
   return (
     <div className={classes.HeaderUserAndCart}>
       <HeaderUserAccount />
-      <HeaderBasket basket='2' total='£2.00' />
+      <HeaderBasket />
     </div>
   );
 };

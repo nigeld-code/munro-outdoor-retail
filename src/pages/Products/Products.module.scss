@@ -86,6 +86,10 @@
     height: 20rem;
     margin: 0;
   }
+
+  .ProductsItemImage {
+    max-width: 220px;
+  }
 }
 
 @media only screen and (min-width: $medium) {

@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducer from './reducers/';
 import middlewares from './middleware/';
-import { watchAuth } from './sagas/';
+import { watchAuth, watchBasket } from './sagas/';
 
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,5 +15,6 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchAuth);
+sagaMiddleware.run(watchBasket);
 
 export default store;

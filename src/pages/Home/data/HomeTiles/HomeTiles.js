@@ -80,7 +80,7 @@ export const Tile4 = () => {
           src={Tile4Contents}
           alt='Shop Footware'
         />
-        <button onClick={() => history.push('/products/footwear')}>
+        <button onClick={() => history.push('/products/_/footwear')}>
           Shop Footwear
         </button>
       </div>

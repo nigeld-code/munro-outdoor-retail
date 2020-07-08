@@ -43,7 +43,7 @@ export const HomeSlideShowSlides = () => {
         </React.Fragment>
       ),
       clicked: () => {
-        history.push('/products/waterproof');
+        history.push('/products/_/waterproof');
       },
       buttons: [
         {
@@ -103,7 +103,7 @@ export const HomeSlideShowSlides = () => {
         </React.Fragment>
       ),
       clicked: () => {
-        history.push('/products');
+        history.push('/products/_');
       },
       buttons: [
         {
@@ -133,7 +133,7 @@ export const HomeSlideShowSlides = () => {
         </React.Fragment>
       ),
       clicked: () => {
-        history.push('/products/maps');
+        history.push('/products/5efddc0ceb021732f01c12c0');
       },
       buttons: [
         {
@@ -174,28 +174,28 @@ export const HomeSlideShowSlides = () => {
         {
           text: 'Clothing Clearance',
           clicked: () => {
-            history.push('/products/clothing/clearance');
+            history.push('/products/_/clothing&clearance');
           },
           minScreenSize: 2
         },
         {
           text: 'Footwear Clearance',
           clicked: () => {
-            history.push('/products/footwear/clearance');
+            history.push('/products/_/footwear&clearance');
           },
           minScreenSize: 4
         },
         {
           text: 'Equipment Clearance',
           clicked: () => {
-            history.push('/products/equipment/clearance');
+            history.push('/products/_/equipment&clearance');
           },
           minScreenSize: 5
         },
         {
           text: 'Camping Clearance',
           clicked: () => {
-            history.push('/products/camping/clearance');
+            history.push('/products/_/camping&clearance');
           },
           minScreenSize: 6
         },

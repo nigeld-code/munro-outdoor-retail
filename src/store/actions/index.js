@@ -17,3 +17,9 @@ export {
   accountRegisterSuccess,
   accountRegisterFail
 } from './auth';
+
+export {
+  addToBasket,
+  initialBasket,
+  clearBasket
+} from './basket';

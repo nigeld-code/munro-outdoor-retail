@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { addToBasket } from '../../store/actions/basket';
 
 import useLoadProduct from '../../hooks/useLoadProduct';
 
@@ -19,6 +21,21 @@ const Product = () => {
 
   const product = useLoadProduct(sku);
 
+  const dispatch = useDispatch();
+
+  const [addToBasketQty, setAddToBasketQty] = useState(1);
+
+  const addToBasketQtyHandler = event => {
+    setAddToBasketQty(event.target.value.replace(/\D/, ''));
+  };
+
+  const addToBasketSubmit = event => {
+    event.preventDefault();
+    if (product && +addToBasketQty > 0) {
+      dispatch(addToBasket(product.productSku, +addToBasketQty, product.productPrice));
+    }
+  };
+
   let productDisplay = null;
   if (product) {
     const productBrandName = (
@@ -35,7 +52,10 @@ const Product = () => {
     );
 
     const productSlideShow = (
-      <div className={classes.ProductSlideShow} style={screenSize > 3 ? {margin: '0.5rem 1rem'} : null}>
+      <div
+        className={classes.ProductSlideShow}
+        style={screenSize > 3 ? { margin: '0.5rem 1rem' } : null}
+      >
         <SlideShow
           slides={product.productImages.map(id => ({
             contents: (
@@ -86,9 +106,14 @@ const Product = () => {
 
     const productAddToBasket = (
       <div className={classes.ProductAddToBasket}>
-        <form>
+        <form onSubmit={addToBasketSubmit}>
           <label htmlFor='quantity'>Qty:</label>
-          <input type='text' id='quantity' />
+          <input
+            type='text'
+            id='quantity'
+            value={addToBasketQty}
+            onChange={addToBasketQtyHandler}
+          />
           <button>Add to Basket</button>
         </form>
       </div>
