@@ -21,5 +21,7 @@ export {
 export {
   addToBasket,
   initialBasket,
-  clearBasket
+  clearBasket,
+  changeBasketQty,
+  removeBasketSku
 } from './basket';

@@ -23,7 +23,15 @@ const Product = () => {
 
   const dispatch = useDispatch();
 
+  const [selectedSize, setSelectedSize] = useState();
+  const [sizePrompt, setSizePrompt] = useState(false);
+
   const [addToBasketQty, setAddToBasketQty] = useState(1);
+
+  const selectSizeBtnHandler = size => {
+    setSizePrompt(false);
+    setSelectedSize(size);
+  };
 
   const addToBasketQtyHandler = event => {
     setAddToBasketQty(event.target.value.replace(/\D/, ''));
@@ -31,8 +39,23 @@ const Product = () => {
 
   const addToBasketSubmit = event => {
     event.preventDefault();
+    if (
+      product &&
+      product.productSizes &&
+      product.productSizes.length &&
+      !selectedSize
+    ) {
+      return setSizePrompt(true);
+    }
     if (product && +addToBasketQty > 0) {
-      dispatch(addToBasket(product.productSku, +addToBasketQty, product.productPrice));
+      dispatch(
+        addToBasket(
+          product.productSku,
+          +addToBasketQty,
+          product.productPrice,
+          selectedSize
+        )
+      );
     }
   };
 
@@ -104,19 +127,45 @@ const Product = () => {
       </div>
     );
 
+    const productSizesBtns =
+      product.productSizes && product.productSizes.length
+        ? product.productSizes.map(size => (
+            <button
+              key={size}
+              type='button'
+              onClick={() => selectSizeBtnHandler(size)}
+              className={selectedSize === size ? classes.selectedSizeBtn : null}
+            >
+              {size}
+            </button>
+          ))
+        : null;
+
     const productAddToBasket = (
-      <div className={classes.ProductAddToBasket}>
-        <form onSubmit={addToBasketSubmit}>
-          <label htmlFor='quantity'>Qty:</label>
-          <input
-            type='text'
-            id='quantity'
-            value={addToBasketQty}
-            onChange={addToBasketQtyHandler}
-          />
-          <button>Add to Basket</button>
-        </form>
-      </div>
+      <React.Fragment>
+        <div className={classes.ProductSizeBtns}>
+          {productSizesBtns ? <label>Size:</label> : null}
+          <div>{productSizesBtns}</div>
+        </div>
+        {productSizesBtns ? <div style={{ height: '0.4rem' }}></div> : null}
+        {productSizesBtns && sizePrompt ? (
+          <small style={{ textDecoration: 'underline' }}>
+            Please select a size
+          </small>
+        ) : null}
+        <div className={classes.ProductAddToBasket}>
+          <form onSubmit={addToBasketSubmit}>
+            <label htmlFor='quantity'>Qty:</label>
+            <input
+              type='text'
+              id='quantity'
+              value={addToBasketQty}
+              onChange={addToBasketQtyHandler}
+            />
+            <button type='submit'>Add to Basket</button>
+          </form>
+        </div>
+      </React.Fragment>
     );
 
     const productDescription = (

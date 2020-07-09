@@ -7,7 +7,9 @@ const initialState = {
 
 const addToBasket = (state, action) => {
   const inBasketIndex = state.basket.findIndex(
-    item => item.productSku === action.productSku
+    item =>
+      item.productSku === action.productSku &&
+      (!item.size || item.size === action.size)
   );
   if (inBasketIndex >= 0) {
     const updatedBasket = [...state.basket];
@@ -27,6 +29,7 @@ const addToBasket = (state, action) => {
         ...state.basket,
         {
           productSku: action.productSku,
+          size: action.size,
           qty: action.qty
         }
       ],
@@ -35,12 +38,60 @@ const addToBasket = (state, action) => {
   }
 };
 
+const changeBasketQty = (state, action) => {
+  const inBasketIndex = state.basket.findIndex(
+    item =>
+      item.productSku === action.productSku &&
+      (!item.size || item.size === action.size)
+  );
+  if (inBasketIndex >= 0) {
+    const updatedTotalPrice =
+      state.totalPrice +
+      (action.qty - state.basket[inBasketIndex].qty) * action.price;
+    const updatedBasket = [...state.basket];
+    updatedBasket[inBasketIndex] = {
+      ...updatedBasket[inBasketIndex],
+      qty: action.qty
+    };
+    return {
+      ...state,
+      basket: updatedBasket,
+      totalPrice: updatedTotalPrice
+    };
+  }
+  return state;
+};
+
+const removeBasketSku = (state, action) => {
+  const inBasketIndex = state.basket.findIndex(
+    item =>
+      item.productSku === action.productSku &&
+      (!item.size || (item.size && action.size))
+  );
+  if (inBasketIndex >= 0) {
+    const updatedTotalPrice =
+      state.totalPrice - state.basket[inBasketIndex].qty * action.price;
+    const updatedBasket = [...state.basket];
+    updatedBasket.splice(inBasketIndex, 1);
+    return {
+      ...state,
+      basket: updatedBasket,
+      totalPrice: updatedTotalPrice
+    };
+  }
+  return state;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_BASKET:
       return addToBasket(state, action);
     case actionTypes.CLEAR_BASKET:
-      return {...initialState};
+      return { ...initialState };
+    case actionTypes.CHANGE_BASKET_QTY:
+      return changeBasketQty(state, action);
+    case actionTypes.REMOVE_BASKET_SKU:
+      return removeBasketSku(state, action);
     default:
       return state;
   }

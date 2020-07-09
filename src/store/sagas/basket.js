@@ -13,6 +13,7 @@ export function* initialBasketSaga(action) {
           if (response && response.data && response.data.product) {
             return {
               productSku: item.productSku,
+              size: item.size,
               qty: item.qty,
               price: response.data.product.productPrice
             };
@@ -29,7 +30,8 @@ export function* initialBasketSaga(action) {
           actions.addToBasket(
             item.productSku,
             item.qty,
-            item.price * item.qty,
+            item.price,
+            item.size,
             true
           )
         );
@@ -46,7 +48,9 @@ export function* addToBasketSaga(action) {
     if (currentBasket) {
       currentBasket = yield JSON.parse(currentBasket);
       const inBasketIndex = currentBasket.findIndex(
-        item => item.productSku === action.productSku
+        item =>
+          item.productSku === action.productSku &&
+          (!item.size || item.size === action.size)
       );
       if (inBasketIndex >= 0) {
         currentBasket[inBasketIndex] = {
@@ -54,11 +58,19 @@ export function* addToBasketSaga(action) {
           qty: currentBasket[inBasketIndex].qty + action.qty
         };
       } else {
-        currentBasket.push({ productSku: action.productSku, qty: action.qty });
+        currentBasket.push({
+          productSku: action.productSku,
+          size: action.size,
+          qty: action.qty
+        });
       }
     } else {
       currentBasket = [];
-      currentBasket.push({ productSku: action.productSku, qty: action.qty });
+      currentBasket.push({
+        productSku: action.productSku,
+        size: action.size,
+        qty: action.qty
+      });
     }
     yield localStorage.setItem('basket', JSON.stringify(currentBasket));
   }
@@ -66,4 +78,40 @@ export function* addToBasketSaga(action) {
 
 export function* clearBasketSaga(action) {
   yield localStorage.removeItem('basket');
+}
+
+export function* changeBasketQtySaga(action) {
+  let currentBasket = yield localStorage.getItem('basket');
+  if (currentBasket) {
+    currentBasket = JSON.parse(currentBasket);
+    const inBasketIndex = currentBasket.findIndex(
+      item =>
+        item.productSku === action.productSku &&
+        (!item.size || item.size === action.size)
+    );
+    if (inBasketIndex >= 0) {
+      currentBasket[inBasketIndex] = {
+        ...currentBasket[inBasketIndex],
+        qty: action.qty
+      };
+      yield localStorage.setItem('basket', JSON.stringify(currentBasket));
+    }
+  }
+}
+
+export function* removeBasketSkuSaga(action) {
+  let currentBasket = yield localStorage.getItem('basket');
+  if (currentBasket) {
+    currentBasket = JSON.parse(currentBasket);
+    const inBasketIndex = currentBasket.findIndex(
+      item =>
+        item.productSku === action.productSku &&
+        (!item.size || item.size === action.size)
+    );
+    if (inBasketIndex >= 0) {
+      currentBasket.splice(inBasketIndex, 1);
+
+      yield localStorage.setItem('basket', JSON.stringify(currentBasket));
+    }
+  }
 }

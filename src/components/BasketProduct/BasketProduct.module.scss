@@ -1,0 +1,93 @@
+@import "../../style-variables/variables";
+
+.BasketProduct {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  width: 80%;
+}
+
+.BasketProduct_ProductDetails {
+  width: 60%;
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    background-color: map-get($colors, product-select);
+    border-radius: 10px;
+  }
+}
+
+.BasketProduct_ProductDetails_Images {
+  margin-right: 1rem;
+}
+
+.BasketProduct_ProductDetails_Details {
+
+}
+
+.BasketProduct_ProductQtyPrice {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.BasketProduct_ProductQtyPrice_Qty {
+  width: 12rem;
+
+  & > input {
+    width: 1.5rem;
+    margin: 0 0.4rem;
+    padding: 0.15rem;
+    padding-bottom: 0.06rem;
+    background-color: map-get($colors, cultured);
+    border: 1px solid map-get($colors, lincoln-green);
+    border-radius: 2px;
+    outline: none;
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: "rubik";
+  }
+
+  & > button {
+    padding: 0.2rem 0.3rem;
+    background-color: map-get($colors, lincoln-green);
+    border: 2px solid map-get($colors, cultured);
+    border-radius: 6px;
+    color: map-get($colors, cultured);
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:disabled {
+      background-color: map-get($colors, cultured);
+      border-color: map-get($colors, lincoln-green);
+      color: map-get($colors, lincoln-green);
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      background-color: map-get($colors, cultured);
+      border-color: map-get($colors, lincoln-green);
+      color: map-get($colors, lincoln-green);
+    }
+
+    &:active {
+      background-color: map-get($colors, middle-green-yellow);
+    }
+  }
+}
+
+.BasketProduct_ProductQtyPrice_Price {
+  width: 5rem;
+}
