@@ -6,3 +6,7 @@ export const getScreenSize = screenSize => {
     screenSize
   };
 };
+
+export const showModal = contents => {
+  return { type: actionTypes.SHOW_MODAL, contents };
+};

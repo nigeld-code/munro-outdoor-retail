@@ -1,4 +1,4 @@
-export { getScreenSize } from './config';
+export { getScreenSize, showModal } from './config';
 
 export {
   accountLogin,

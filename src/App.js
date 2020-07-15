@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { accountCheckAuthState, initialBasket } from './store/actions/';
 
+import Modal from './components/UI/Modal/Modal';
 import Layout from './hoc/Layout/Layout';
 import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
@@ -33,6 +34,7 @@ const App = ({ location }) => {
 
   return (
     <Layout>
+      <Modal />
       <Switch>
         <Route
           path='/product/:sku'

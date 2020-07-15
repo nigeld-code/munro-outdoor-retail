@@ -13,10 +13,101 @@
 .ProductsFilter {
   display: none;
   width: 14rem;
-  border: 1px solid black;
-  margin: 0.25rem 0.25rem 0.5rem 0;
-  white-space: nowrap;
+  border: 1px solid map-get($colors, lincoln-green);
+  border-radius: 5px;
+  color: map-get($colors, lincoln-green);
+  margin: 0.25rem 0.25rem 0.5rem 0.25rem;
   box-sizing: border-box;
+
+  & > ul {
+    list-style: none;
+    padding: 0.5rem 0.25rem;
+    margin: 0;
+
+    & > li {
+      margin-right: 0.25rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.ProductsFilter_Heading {
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+}
+
+.ProductsFilter_Line {
+  margin: 0.25rem 0;
+  height: 1px;
+  background-color: map-get($colors, lincoln-green);
+}
+
+.ProductsFilter_Title {
+  width: 90%;
+}
+
+.ProductsFilter_Option {
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.ProductsFilter_OptionSelected {
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+}
+
+.ProductsFilter_Reset {
+  padding: 0.5rem;
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.ProductsFilter_Text {
+  user-select: none;
+}
+
+.ProductsSort {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > label {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  & > select {
+    margin-top: 0.5rem;
+    margin-right: 1rem;
+    outline: none;
+    font-family: "rubik";
+    font-size: 1.2rem;
+    background-color: map-get($colors, cultured);
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.Products_Right {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .ProductsContainer {
@@ -97,7 +188,7 @@
     display: block;
   }
 
-  .ProductsContainer {
+  .Products_Right {
     width: calc(100% - 14rem);
   }
 

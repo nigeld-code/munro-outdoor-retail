@@ -1,5 +1,6 @@
 // CONFIG
 export const GET_SCREEN_SIZE = 'GET_SCREEN_SIZE';
+export const SHOW_MODAL = 'SHOW_MODAL';
 
 //ACCOUNT
 export const ACCOUNT_AUTH_LOGIN = 'ACCOUNT_AUTH_LOGIN';

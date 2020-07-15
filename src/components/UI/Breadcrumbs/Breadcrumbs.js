@@ -11,17 +11,19 @@ const Breadcrumbs = props => {
 
   let breadcrumbsArr = null;
   if (typeof breadcrumbs === 'object') {
-    breadcrumbsArr = breadcrumbs.map(breadcrumb => (
-      <React.Fragment key={breadcrumb._id}>
-        <div className={classes.BreadcrumbsArrow}>{'>'}</div>
-        <div
-          className={classes.BreadcrumbsTitle}
-          onClick={() => history.push(`/products/${breadcrumb._id}`)}
-        >
-          {breadcrumb.title}
-        </div>
-      </React.Fragment>
-    ));
+    breadcrumbsArr =
+      breadcrumbs &&
+      breadcrumbs.map(breadcrumb => (
+        <React.Fragment key={breadcrumb._id}>
+          <div className={classes.BreadcrumbsArrow}>{'>'}</div>
+          <div
+            className={classes.BreadcrumbsTitle}
+            onClick={() => history.push(`/products/${breadcrumb._id}`)}
+          >
+            {breadcrumb.title}
+          </div>
+        </React.Fragment>
+      ));
   }
 
   return (

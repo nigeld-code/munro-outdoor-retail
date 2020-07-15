@@ -1,5 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { showModal } from '../../../store/actions/';
 
 import image1 from '../../../assets/images/HomeSlides/HomeSlide1.jpg';
 import image2 from '../../../assets/images/HomeSlides/HomeSlide2.jpg';
@@ -25,6 +28,8 @@ export const HomeSlideShowDisplay = {
 
 export const HomeSlideShowSlides = () => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   return [
     {
@@ -112,7 +117,8 @@ export const HomeSlideShowSlides = () => {
         {
           text: 'View Terms',
           clicked: () => {
-            history.push('/terms/first-online-order-discount');
+            // history.push('/terms/first-online-order-discount');
+            dispatch(showModal('Hello World!'));
           }
         }
       ]
@@ -188,14 +194,14 @@ export const HomeSlideShowSlides = () => {
         {
           text: 'Equipment Clearance',
           clicked: () => {
-            history.push('/products/_/equipment&clearance');
+            history.push('/products/5efdd1c4eb021732f01c1262/clearance');
           },
           minScreenSize: 5
         },
         {
           text: 'Camping Clearance',
           clicked: () => {
-            history.push('/products/_/camping&clearance');
+            history.push('/products/5efdd1cceb021732f01c1263/clearance');
           },
           minScreenSize: 6
         },

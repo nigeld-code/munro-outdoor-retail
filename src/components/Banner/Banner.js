@@ -1,10 +1,14 @@
 import React from 'react';
+
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import classes from './Banner.module.scss';
 
 const Banner = props => {
   const screenSize = useSelector(state => state.config.screenSize);
+
+  const history = useHistory();
 
   const bannerItems =
     props.contents &&
@@ -15,7 +19,7 @@ const Banner = props => {
       return (
         <div
           key={`Banner ${index}`}
-          onClick={() => bannerItem.click && bannerItem.click()}
+          onClick={() => bannerItem.click && bannerItem.click({history})}
           style={props.clicked ? { cursor: 'pointer' } : null}
           className={[
             classes.BannerItem,
