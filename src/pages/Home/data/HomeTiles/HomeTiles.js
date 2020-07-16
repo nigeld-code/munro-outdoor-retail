@@ -15,7 +15,10 @@ import classes from './HomeTiles.module.scss';
 export const Tile1 = () => {
   const history = useHistory();
   return (
-    <div className={classes.HomeTiles}>
+    <div
+      className={classes.HomeTiles}
+      onClick={() => history.push('/products/_/essentials')}
+    >
       <img src={Tile1Image} alt='' />
       <div className={classes.Tile}>
         <img
@@ -23,9 +26,7 @@ export const Tile1 = () => {
           src={Tile1Contents}
           alt='Shop Essential Walking Equipment'
         />
-        <button onClick={() => history.push('/products/_/essentials')}>
-          Shop Essentials
-        </button>
+        <button>Shop Essentials</button>
       </div>
     </div>
   );
@@ -34,7 +35,10 @@ export const Tile1 = () => {
 export const Tile2 = () => {
   const history = useHistory();
   return (
-    <div className={classes.HomeTiles}>
+    <div
+      className={classes.HomeTiles}
+      onClick={() => history.push('/products/_/tents_and_camping_sale')}
+    >
       <img src={Tile2Image} alt='' />
       <div className={classes.Tile}>
         <img
@@ -42,9 +46,7 @@ export const Tile2 = () => {
           src={Tile2Contents}
           alt='Shop Tents &amp; Camping'
         />
-        <button onClick={() => history.push('/products/_/tents_and_camping_sale')}>
-          Shop Tents and Camping
-        </button>
+        <button>Shop Tents and Camping</button>
       </div>
     </div>
   );
@@ -53,7 +55,10 @@ export const Tile2 = () => {
 export const Tile3 = () => {
   const history = useHistory();
   return (
-    <div className={classes.HomeTiles}>
+    <div
+      className={classes.HomeTiles}
+      onClick={() => history.push('/products/_/ascend')}
+    >
       <img src={Tile3Image} alt='' />
       <div className={classes.Tile}>
         <img
@@ -61,9 +66,7 @@ export const Tile3 = () => {
           src={Tile3Contents}
           alt='Shop the New Ascend Range'
         />
-        <button onClick={() => history.push('/products/_/ascend')}>
-          Shop Ascend
-        </button>
+        <button>Shop Ascend</button>
       </div>
     </div>
   );
@@ -72,7 +75,10 @@ export const Tile3 = () => {
 export const Tile4 = () => {
   const history = useHistory();
   return (
-    <div className={classes.HomeTiles}>
+    <div
+      className={classes.HomeTiles}
+      onClick={() => history.push('/products/_/footwear')}
+    >
       <img src={Tile4Image} alt='' />
       <div className={classes.Tile}>
         <img
@@ -80,9 +86,7 @@ export const Tile4 = () => {
           src={Tile4Contents}
           alt='Shop Footware'
         />
-        <button onClick={() => history.push('/products/_/footwear')}>
-          Shop Footwear
-        </button>
+        <button>Shop Footwear</button>
       </div>
     </div>
   );

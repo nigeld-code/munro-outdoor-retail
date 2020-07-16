@@ -27,7 +27,12 @@ const BasketProduct = props => {
   const updateBasketHandler = () => {
     if (productQty) {
       dispatch(
-        changeBasketQty(product.productSku, productQty, product.productPrice, props.size)
+        changeBasketQty(
+          product.productSku,
+          productQty,
+          product.productPrice,
+          props.size
+        )
       );
     } else {
       removeBasketSkuHandler();
@@ -35,16 +40,24 @@ const BasketProduct = props => {
   };
 
   const removeBasketSkuHandler = () => {
-    dispatch(removeBasketSku(product.productSku, product.productPrice, props.size));
+    dispatch(
+      removeBasketSku(product.productSku, product.productPrice, props.size)
+    );
   };
 
   let productDisplay = null;
   if (product) {
     productDisplay = (
-      <div className={classes.BasketProduct}>
+      <div
+        className={classes.BasketProduct}
+        style={props.isModal ? { width: '100%' } : null}
+      >
         <article
           className={classes.BasketProduct_ProductDetails}
-          onClick={() => history.push(`product/${product.productSku}`)}
+          style={props.isModal ? { pointerEvents: 'none' } : null}
+          onClick={() =>
+            !props.isModal && history.push(`product/${product.productSku}`)
+          }
         >
           <section className={classes.BasketProduct_ProductDetails_Images}>
             <img

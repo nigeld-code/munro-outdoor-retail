@@ -8,6 +8,8 @@ import Breadcrumbs from '../../components/UI/Breadcrumbs/Breadcrumbs';
 
 import productsTopBanner from './data/productsTopBanner';
 
+import { showModal } from '../../store/actions/';
+
 import classes from './Products.module.scss';
 
 const API_URL = 'http://192.168.0.17:8080/';
@@ -395,7 +397,31 @@ const Products = () => {
       <Banner
         className={productsTopBanner.className}
         contents={productsTopBanner.contents}
-        clicked={() => history.push('/terms/first-online-order-discount')}
+        clicked={({ dispatch }) =>
+          dispatch(
+            showModal({
+              title: '£15 OFF your First Order Terms',
+              main: [
+                { text: 'Online Exclusive!!! Munro Account Required!!!' },
+                { hr: true },
+                { text: 'Key Info:' },
+                {
+                  points: [
+                    '£15 is taken off the total of your first order with a Munro Account',
+                    'Minimum order total of £50 required',
+                    'Discount applied automatically at Checkout',
+                    'Can only be used Once'
+                  ]
+                },
+                { hr: true },
+                {
+                  text:
+                    'Bare in mind this is a completely fictitious website and no orders or payment are actually made or taken. But feel free to check it works :)'
+                }
+              ]
+            })
+          )
+        }
       />
       {category !== '_' ? (
         <Breadcrumbs breadcrumbs={breadcrumbs ? breadcrumbs : null} />

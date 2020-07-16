@@ -2,9 +2,10 @@
 
 .CompanyInfo {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   align-items: flex-start;
   justify-content: space-between;
+  width: $xsmall;
   margin: 0.25rem;
 }
 
@@ -36,5 +37,12 @@
       font-size: 1.1rem;
       font-weight: bold;
     }
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .CompanyInfo {
+    flex-flow: row wrap;
+    width: initial;
   }
 }

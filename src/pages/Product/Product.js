@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { addToBasket } from '../../store/actions/basket';
+import { addToBasket, showModal } from '../../store/actions/';
 
 import useLoadProduct from '../../hooks/useLoadProduct';
 
@@ -55,6 +55,12 @@ const Product = () => {
           product.productPrice,
           selectedSize
         )
+      );
+      dispatch(
+        showModal({
+          title: 'Product added to basket',
+          main: [{ basket: true }]
+        })
       );
     }
   };

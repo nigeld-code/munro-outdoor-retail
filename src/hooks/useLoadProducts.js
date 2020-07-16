@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { productsAxios } from '../axios';
 
@@ -8,7 +8,10 @@ const useLoadProducts = (category, selection) => {
   const [refineOptions, setRefineOptions] = useState();
   const [brands, setBrands] = useState();
 
+  const isMountedRef = useRef(null);
+
   useEffect(() => {
+    isMountedRef.current = true;
     const fetchProducts = async () => {
       try {
         const response = await productsAxios.get(`${category}/${selection}`);
@@ -24,7 +27,12 @@ const useLoadProducts = (category, selection) => {
         console.log('err', err);
       }
     };
-    fetchProducts();
+    if (isMountedRef.current) {
+      fetchProducts();
+    }
+    return () => {
+      isMountedRef.current = false;
+    };
   }, [category, selection]);
   return {
     products,

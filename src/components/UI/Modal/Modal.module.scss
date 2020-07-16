@@ -1,0 +1,120 @@
+@import "../../../style-variables/variables";
+
+.Modal {
+  position: fixed;
+  margin-top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  max-height: 85vh;
+  overflow-y: auto;
+  z-index: 900;
+  background-color: map-get($colors, cultured);
+  border-radius: 15px;
+}
+
+.Modal_CloseBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0 0.25rem;
+  cursor: pointer;
+  border: 2px solid map-get($colors, lincoln-green);
+  color: map-get($colors, lincoln-green);
+  border-radius: 5px;
+
+  &:hover {
+    color: map-get($colors, cultured);
+    background-color: map-get($colors, lincoln-green);
+  }
+}
+
+.Modal_Logo {
+  width: 25%;
+  padding-top: 1rem;
+}
+
+.Modal_Main {
+  padding: 0.5rem 1.5rem;
+
+  & > h2 {
+    text-align: center;
+  }
+}
+
+.Modal_BasketSubtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Modal_BasketText {
+  padding: 0.25rem 1rem;
+  text-align: right;
+
+  & > p {
+    margin: 0;
+  }
+
+  & > small {
+    font-size: 0.7rem;
+  }
+}
+
+.Modal_BasketTotalPrice {
+  width: 5rem;
+  margin-top: 0.25rem;
+  align-self: flex-start;
+}
+
+.Modal_BasketButtons {
+  margin: 0.5rem 0.25rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  & > button {
+    width: 40%;
+    margin-bottom: 0.5rem;
+    min-width: 18ch;
+    padding: 1rem 1rem;
+    background-color: map-get($colors, lincoln-green);
+    border: 2px solid map-get($colors, cultured);
+    border-radius: 6px;
+    color: map-get($colors, cultured);
+    font-size: 1.1rem;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: map-get($colors, cultured);
+      border-color: map-get($colors, lincoln-green);
+      color: map-get($colors, lincoln-green);
+    }
+
+    &:active {
+      background-color: map-get($colors, middle-green-yellow);
+    }
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .Modal {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .Modal {
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .Modal {
+    width: 750px;
+  }
+}

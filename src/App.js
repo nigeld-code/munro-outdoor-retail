@@ -33,39 +33,41 @@ const App = ({ location }) => {
   }, [pathname]);
 
   return (
-    <Layout>
+    <React.Fragment>
       <Modal />
-      <Switch>
-        <Route
-          path='/product/:sku'
-          component={props => <Product {...props} />}
-        />
-        <Route
-          path='/products/:category/:selection'
-          component={props => <Products {...props} />}
-        />
-        <Route
-          path='/products/:category'
-          component={props => <Products {...props} />}
-        />
-        <Route
-          path='/account'
-          exact
-          component={props => <Account {...props} />}
-        />
-        <Route
-          path='/basket'
-          exact
-          component={props => <Basket {...props} />}
-        />
-        <Route
-          path='/passwordReset/:userId/:resetToken'
-          component={props => <Account isReset {...props} />}
-        />
-        <Route path='/' exact component={props => <Home {...props} />} />
-        <Redirect to='/' />
-      </Switch>
-    </Layout>
+      <Layout>
+        <Switch>
+          <Route
+            path='/product/:sku'
+            component={props => <Product {...props} />}
+          />
+          <Route
+            path='/products/:category/:selection'
+            component={props => <Products {...props} />}
+          />
+          <Route
+            path='/products/:category'
+            component={props => <Products {...props} />}
+          />
+          <Route
+            path='/account'
+            exact
+            component={props => <Account {...props} />}
+          />
+          <Route
+            path='/basket'
+            exact
+            component={props => <Basket {...props} />}
+          />
+          <Route
+            path='/passwordReset/:userId/:resetToken'
+            component={props => <Account isReset {...props} />}
+          />
+          <Route path='/' exact component={props => <Home {...props} />} />
+          <Redirect to='/' />
+        </Switch>
+      </Layout>
+    </React.Fragment>
   );
 };
 
