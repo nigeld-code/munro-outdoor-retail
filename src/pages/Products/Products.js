@@ -433,7 +433,20 @@ const Products = () => {
         <div className={classes.Products_Right}>
           <div className={classes.ProductsSort}>{productsSort}</div>
           <section className={classes.ProductsContainer}>
-            {productsDisplay.length ? productsDisplay : <p>No Products</p>}
+            {productsDisplay.length ? (
+              productsDisplay
+            ) : selection ? (
+              <div style={{ margin: '2rem' }}>
+                <p>Search "{selection.split('&').join(' ')}"</p>
+                <p>No Results Found</p>
+                <p>
+                  Oops, we couldn't find what you were looking for. Try
+                  different keywords or have a browse of our categories.
+                </p>
+              </div>
+            ) : (
+              <p style={{ margin: '2rem' }}>No Products</p>
+            )}
           </section>
         </div>
       </div>

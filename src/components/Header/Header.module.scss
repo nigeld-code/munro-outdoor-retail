@@ -33,7 +33,7 @@
   padding: 0.5rem 0;
   background-color: map-get($colors, lincoln-green);
 
-  & > input[type="text"] {
+  & > input {
     width: 80%;
     padding: 0.25rem 0.5rem;
     background-color: map-get($colors, cultured);
@@ -68,18 +68,18 @@
   .HeaderRow {
     justify-content: center;
   }
-  
+
   .HeaderLogo {
     position: absolute;
     top: 0;
     left: 0;
   }
-  
+
   .HeaderSearch {
     width: 40%;
     padding: 0.5rem 1.5rem;
     border-radius: 0 0 15px 15px;
-  
+
     & > input[type="text"] {
       width: 100%;
       padding: 0.25rem 0.5rem;

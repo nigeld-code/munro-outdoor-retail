@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import Logo from '../UI/Logo/Logo';
@@ -11,13 +11,53 @@ import Navigation from '../Navigation/Navigation';
 const Header = () => {
   const screenSize = useSelector(state => state.config.screenSize);
 
+  const [searchString, setSearchString] = useState('');
+
+  const history = useHistory();
+
+  const searchInputHandler = event => {
+    setSearchString(event.target.value.toLowerCase());
+  };
+
+  const searchHandler = event => {
+    event.preventDefault();
+    if (searchString !== '') {
+      const searchSplitJoin = searchString.split(' ').join('&');
+      history.replace('/');
+      history.push(`products/_/${searchSplitJoin}`);
+    }
+  };
+
   const search = (
-    <div className={classes.HeaderSearch}>
-      <input type='text' placeholder='Search...' />
+    <form className={classes.HeaderSearch} onSubmit={searchHandler}>
+      <label
+        htmlFor='search'
+        style={{
+          clip: 'rect(0 0 0 0)',
+          height: '1px',
+          width: '1px',
+          margin: '-1px',
+          overflow: 'hidden'
+        }}
+      >
+        Search
+      </label>
+      <input
+        type='text'
+        id='search'
+        placeholder='Search...'
+        value={searchString}
+        onChange={searchInputHandler}
+        onKeyPress={event => {
+          if (event.key === 'Enter') {
+            event.target.blur();
+          }
+        }}
+      />
       <button>
         <i className='nld-search'></i>
       </button>
-    </div>
+    </form>
   );
 
   const logo = (
