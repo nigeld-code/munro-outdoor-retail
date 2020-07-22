@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import { accountAuthRegister } from '../../../store/actions/';
@@ -9,6 +9,14 @@ import classes from '../Account.module.scss';
 
 const Register = props => {
   const dispatch = useDispatch();
+
+  const registerErrors = useSelector(state => {
+    if (state.auth.error && state.auth.error.data) {
+      return state.auth.error.data.map(errorObj => errorObj.msg);
+    }
+    return [];
+  });
+
   const accountRegisterFormik = useFormik({
     initialValues: {
       email: '',
@@ -79,12 +87,12 @@ const Register = props => {
         <div className={classes.AccountLoginInputField}>
           <label htmlFor='passwordCheck'>Confirm Password: </label>
           <input
-          className={
-            accountRegisterFormik.touched.passwordCheck &&
-            accountRegisterFormik.errors.passwordCheck
-              ? classes.AccountLoginErrorInput
-              : null
-          }
+            className={
+              accountRegisterFormik.touched.passwordCheck &&
+              accountRegisterFormik.errors.passwordCheck
+                ? classes.AccountLoginErrorInput
+                : null
+            }
             name='passwordCheck'
             type='password'
             {...accountRegisterFormik.getFieldProps('passwordCheck')}
@@ -94,6 +102,18 @@ const Register = props => {
         accountRegisterFormik.errors.passwordCheck ? (
           <div className={classes.AccountLoginErrorText}>
             {accountRegisterFormik.errors.passwordCheck}
+          </div>
+        ) : null}
+        {registerErrors.length ? (
+          <div style={{ marginTop: '0.5rem' }}>
+            {registerErrors.map((error, index) => (
+              <div
+                key={error + index}
+                className={classes.AccountLoginErrorText}
+              >
+                *{error}
+              </div>
+            ))}
           </div>
         ) : null}
         <button type='submit'>Register</button>

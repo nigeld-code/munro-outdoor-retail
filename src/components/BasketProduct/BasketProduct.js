@@ -50,7 +50,6 @@ const BasketProduct = props => {
     productDisplay = (
       <div
         className={classes.BasketProduct}
-        style={props.isModal ? { width: '100%' } : null}
       >
         <article
           className={classes.BasketProduct_ProductDetails}

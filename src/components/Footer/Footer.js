@@ -20,8 +20,14 @@ const Footer = () => {
             Munro Outdoor Retail Ltd is not real and this website offers no
             services. The entire website is a fiction. <br /> Created by me to
             practice ReactJS, please visit my{' '}
-            <a href='https://github.com/nigeld-code'>github</a> to see my other
-            projects.
+            <a
+              href='https://github.com/nigeld-code'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              github
+            </a>{' '}
+            to see my other projects.
           </p>
         </div>
       </div>

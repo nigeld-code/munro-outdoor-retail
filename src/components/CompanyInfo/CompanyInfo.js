@@ -121,7 +121,7 @@ const companyInfoData = ({ history, dispatch }) => {
                 { text: 'Free next day Deliver on all orders over £60' },
                 {
                   text:
-                    'Delivery charge for order under £60 are £5 and will arrive within 3 working days of your order confirmation'
+                    'Delivery charge for orders under £60 is £5 and will arrive within 3 working days of your order confirmation'
                 },
                 { hr: true },
                 {
@@ -288,12 +288,12 @@ const companyInfoData = ({ history, dispatch }) => {
       {
         text: 'Careers',
         link: () => {
-          dispatch(showModal({
-            title: 'Careers',
-            main: [
-              {text: 'Sorry no current vacancies'}
-            ]
-          }))
+          dispatch(
+            showModal({
+              title: 'Careers',
+              main: [{ text: 'Sorry no current vacancies' }]
+            })
+          );
         }
       }
     ]

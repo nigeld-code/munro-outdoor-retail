@@ -14,11 +14,12 @@ export const accountLogin = () => {
   };
 };
 
-export const accountLoginSuccess = (token, email) => {
+export const accountLoginSuccess = (token, email, savedAddress) => {
   return {
     type: actionTypes.ACCOUNT_LOGIN_SUCCESS,
     token,
-    email
+    email,
+    savedAddress
   };
 };
 

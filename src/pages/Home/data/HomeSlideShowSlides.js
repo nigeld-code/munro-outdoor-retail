@@ -33,20 +33,17 @@ export const HomeSlideShowSlides = () => {
 
   return [
     {
-      contents: (
-        <React.Fragment>
-          <img
-            style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              cursor: 'pointer'
-            }}
-            src={image1}
-            alt=''
-          />
-        </React.Fragment>
-      ),
+      contents: {
+        img: {
+          src: image1,
+          style: {
+            height: '100%',
+            width: '100%',
+            objectFit: 'cover',
+            cursor: 'pointer'
+          }
+        }
+      },
       clicked: () => {
         history.push('/products/_/waterproof');
       },
@@ -57,20 +54,17 @@ export const HomeSlideShowSlides = () => {
       ]
     },
     {
-      contents: (
-        <React.Fragment>
-          <img
-            style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              cursor: 'pointer'
-            }}
-            src={image2}
-            alt=''
-          />
-        </React.Fragment>
-      ),
+      contents: {
+        img: {
+          src: image2,
+          style: {
+            height: '100%',
+            width: '100%',
+            objectFit: 'cover',
+            cursor: 'pointer'
+          }
+        }
+      },
       clicked: () => {
         history.push('/products/_/sale');
       },
@@ -81,32 +75,34 @@ export const HomeSlideShowSlides = () => {
       ]
     },
     {
-      contents: (
-        <React.Fragment>
-          <div
-            style={{
-              position: 'relative',
-              height: '100%',
-              width: '100%',
-              backgroundColor: '#25521c'
-            }}
-          >
-            <Logo
-              textColor='#f6f6f6'
-              lineColor='f6f6f6'
-              className={classes.HomeSlide3Logo}
-            />
-            <div className={classes.HomeSlide3Text}>
-              <p>
-                <strong>£15 OFF</strong>
-                <em> your First Order of £50 or more</em>
-                <br />
-                <strong>Online Exclusive</strong>
-              </p>
+      contents: {
+        jsx: (
+          <React.Fragment>
+            <div
+              style={{
+                position: 'relative',
+                height: '100%',
+                width: '100%',
+                backgroundColor: '#25521c'
+              }}
+            >
+              <Logo
+                textColor='#f6f6f6'
+                lineColor='f6f6f6'
+                className={classes.HomeSlide3Logo}
+              />
+              <div className={classes.HomeSlide3Text}>
+                <p>
+                  <strong>£15 OFF</strong>
+                  <em> your First Order of £50 or more</em>
+                  <br />
+                  <strong>Online Exclusive</strong>
+                </p>
+              </div>
             </div>
-          </div>
-        </React.Fragment>
-      ),
+          </React.Fragment>
+        )
+      },
       clicked: () => {
         history.push('/products/_');
       },
@@ -145,20 +141,17 @@ export const HomeSlideShowSlides = () => {
       ]
     },
     {
-      contents: (
-        <React.Fragment>
-          <img
-            style={{
-              height: '100%',
-              width: '100%',
-              objectFit: 'cover',
-              cursor: 'pointer'
-            }}
-            src={image4}
-            alt=''
-          />
-        </React.Fragment>
-      ),
+      contents: {
+        img: {
+          src: image4,
+          style: {
+            height: '100%',
+            width: '100%',
+            objectFit: 'cover',
+            cursor: 'pointer'
+          }
+        }
+      },
       clicked: () => {
         history.push('/products/5efddc0ceb021732f01c12c0');
       },
@@ -169,31 +162,31 @@ export const HomeSlideShowSlides = () => {
       ]
     },
     {
-      contents: (
-        <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              height: '100%',
-              width: '100%',
-              backgroundColor: '#FFDB0B'
-            }}
-          >
-            <img
+      contents: {
+        img: {
+          src: image5,
+          style: {
+            position: 'absolute',
+            display: 'block',
+            width: '90%',
+            right: '5%',
+            top: '35%',
+            objectFit: 'contain',
+            cursor: 'pointer'
+          }
+        },
+        jsx: (
+          <React.Fragment>
+            <div
               style={{
-                display: 'block',
-                width: '90%',
-                objectFit: 'contain',
-                cursor: 'pointer'
+                height: '100%',
+                width: '100%',
+                backgroundColor: '#FFDB0B'
               }}
-              src={image5}
-              alt=''
-            />
-          </div>
-        </React.Fragment>
-      ),
+            ></div>
+          </React.Fragment>
+        )
+      },
       clicked: () => {
         history.push('/products/_/clearance');
       },

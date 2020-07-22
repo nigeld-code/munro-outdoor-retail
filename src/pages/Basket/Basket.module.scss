@@ -1,6 +1,312 @@
+@import "../../style-variables/variables";
+
+.Basket {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.Basket_Title {
+  margin-top: 0.5rem;
+  text-align: center;
+
+  & > span {
+    font-size: 1.5rem;
+  }
+}
+
+.Basket_ClearBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-decoration: underline;
+  color: map-get($colors, lincoln-green);
+  width: 0;
+  font-size: 0.75rem;
+  padding: 0;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
 .Basket_BasketDisplay {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+}
+
+.Basket_BasketSubtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.Basket_BasketText {
+  padding: 0.25rem 1rem;
+  text-align: right;
+  display: flex;
+  flex-flow: column nowrap;
+
+  & > p {
+    margin: 0;
+  }
+
+  & > small {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.Basket_Voucher {
+  text-align: center;
+  margin-top: 0.5rem;
+
+  & > label {
+    margin: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  & > input {
+    background-color: map-get($colors, cultured);
+    color: map-get($colors, lincoln-green);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid map-get($colors, lincoln-green);
+    border-radius: 5px 0 0 5px;
+    width: 50%;
+    outline: none;
+  }
+
+  & > button {
+    background-color: map-get($colors, lincoln-green);
+    color: map-get($colors, cultured);
+    border: 1px solid map-get($colors, lincoln-green);
+    padding: 0.45rem 0.5rem;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      background-color: map-get($colors, cultured);
+      color: map-get($colors, lincoln-green);
+    }
+
+    &:active {
+      background-color: map-get($colors, middle-green-yellow);
+    }
+  }
+}
+
+.Basket_VoucherMessage_Accept {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: map-get($colors, lincoln-green);
+}
+
+.Basket_VoucherMessage_Reject {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: map-get($colors, error);
+}
+
+.Basket_VoucherCode_Remove {
+  cursor: pointer;
+  font-size: 0.6rem;
+  margin-left: 0.25rem;
+  border: 1px solid map-get($colors, charleston-green);
+  padding: 0 0.1rem;
+  border-radius: 3px;
+
+  &:hover {
+    color: map-get($colors, cultured);
+    background-color: map-get($colors, error);
+    opacity: 0.8;
+  }
+}
+
+.Basket_BasketSubTotalPrice {
+  width: 5rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-flow: column nowrap;
+
+  & > p {
+    margin: 0;
+  }
+
+  & > small {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.Basket_Link {
+  color: map-get($colors, lincoln-green);
+}
+
+.Basket_Line {
+  text-align: center;
+}
+
+.Basket_Delivery {
+  margin: 1rem auto;
+  width: 60%;
+
+  & > button {
+    width: 50%;
+    padding: 0.5rem;
+    background-color: map-get($colors, cultured);
+    border: 2px solid map-get($colors, lincoln-green);
+    outline: none;
+    border-radius: 8px 8px 0 0;
+    font-size: 1rem;
+    color: map-get($colors, lincoln-green);
+    cursor: pointer;
+
+    &:hover {
+      color: map-get($colors, cultured);
+      background-color: map-get($colors, lincoln-green);
+    }
+  }
+
+  & > section {
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid map-get($colors, lincoln-green);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.Basket_Delivery_BtnActive {
+  color: map-get($colors, cultured) !important;
+  background-color: map-get($colors, lincoln-green) !important;
+}
+
+.Basket_DeliveryForm {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  & > h4 {
+    margin: 0;
+  }
+
+  & > input {
+    margin: 0.5rem 0.25rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.2rem;
+    border: 1px solid map-get($colors, charleston-green);
+    border-radius: 3px;
+  }
+
+  & > select {
+    margin: 0.5rem 0.25rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1.2rem;
+    border: 1px solid map-get($colors, charleston-green);
+    border-radius: 3px;
+  }
+}
+
+.Basket_DeliveryForm_StoreDetails {
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.9rem;
+}
+
+.Basket_DeliveryForm_StoreDetailsAddress {
+  margin-top: 1rem;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+.Basket_DeliveryTotal {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Basket_DeliveryTotalText {
+  padding: 0.25rem 1rem;
+  text-align: right;
+}
+
+.Basket_DeliveryTotalValue {
+  width: 5rem;
+}
+
+.Basket_ProceedToCheckoutBtn {
+  display: block;
+  width: 50%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+  border: 3px solid map-get($colors, lincoln-green);
+  border-radius: 10px;
+  font-size: 1.6rem;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: map-get($colors, cultured);
+    color: map-get($colors, lincoln-green);
+  }
+
+  &:active {
+    background-color: map-get($colors, middle-green-yellow);
+  }
+}
+
+.Basket_InputValidation {
+  color: map-get($colors, error);
+  width: 100%;
+  text-align: right;
+  margin: 0;
+}
+
+.Basket_SaveAddress {
+  width: 100%;
+
+  & > small {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > label {
+      margin-bottom: 0.2rem;
+    }
+  }
+}
+
+.Basket_Total {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.1rem;
+
+  & > p {
+    margin: 0;
+    padding: 0.25rem 1rem;
+  }
+
+  & > span {
+    width: 5rem;
+  }
 }

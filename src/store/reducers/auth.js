@@ -3,6 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   token: null,
   email: null,
+  savedAddress: null,
   error: null,
   registerSuccess: null
 };
@@ -19,6 +20,10 @@ const accountLoginSuccess = (state, action) => {
     ...state,
     token: action.token,
     email: action.email,
+    savedAddress:
+      Object.keys(action.savedAddress).length === 0
+        ? null
+        : action.savedAddress,
     error: null
   };
 };
@@ -28,6 +33,7 @@ const accountLoginFail = (state, action) => {
     ...state,
     token: null,
     email: null,
+    savedAddress: null,
     error: action.error
   };
 };
@@ -59,7 +65,8 @@ const accountLogoutComplete = (state, action) => {
   return {
     ...state,
     token: null,
-    email: null
+    email: null,
+    savedAddress: null
   };
 };
 

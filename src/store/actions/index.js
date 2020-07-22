@@ -25,3 +25,11 @@ export {
   changeBasketQty,
   removeBasketSku
 } from './basket';
+
+export {
+  checkVoucherCode,
+  checkAutoVoucherCodes,
+  acceptVoucherCode,
+  rejectVoucherCode,
+  removeVoucherCode
+} from './voucherCode';

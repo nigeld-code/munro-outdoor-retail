@@ -76,7 +76,7 @@ const Modal = () => {
                           <div className={classes.Modal_BasketSubtotal}>
                             <div className={classes.Modal_BasketText}>
                               <p>Subtotal</p>
-                              <small>{'(excluding delivery)'}</small>
+                              <small>{'(excluding delivery & discounts)'}</small>
                             </div>
                             <div className={classes.Modal_BasketTotalPrice}>
                               £{basket.totalPrice}

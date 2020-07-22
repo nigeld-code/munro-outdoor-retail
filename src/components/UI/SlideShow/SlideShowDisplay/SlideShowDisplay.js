@@ -37,6 +37,24 @@ const slideButtons = ({ buttons, clicked }, screenSize) => {
 const SlideShowDisplay = props => {
   const screenSize = useSelector(state => state.config.screenSize);
 
+  const slideImages = useMemo(() => {
+    return (
+      props.slides &&
+      props.slides.map(slide => {
+        if (slide.contents.img && slide.contents.img.src) {
+          const thisImage = React.createElement('img', {
+            src: slide.contents.img.src,
+            alt: '',
+            style: slide.contents.img.style ? slide.contents.img.style : null
+          });
+          return thisImage;
+        } else {
+          return null;
+        }
+      })
+    );
+  }, [props.slides]);
+
   const slidesForSlideShow = useMemo(() => {
     const slidesForSlideShowArr = [];
     props.slides &&
@@ -44,14 +62,15 @@ const SlideShowDisplay = props => {
         slidesForSlideShowArr.push(
           <div className={classes.Slide} key={'Slide' + index}>
             <div className={classes.SlideContents} onClick={slide.clicked}>
-              {slide.contents}
+              {slide.contents.img ? slideImages[index] : null}
+              {slide.contents.jsx}
             </div>
             {slideButtons(slide, screenSize)}
           </div>
         );
       });
-      return slidesForSlideShowArr;
-  }, [screenSize, props.slides]);
+    return slidesForSlideShowArr;
+  }, [screenSize, props.slides, slideImages]);
 
   let slideShowTransitionClass = [classes.SlideShowDisplay];
   let transitionStyle = {
@@ -67,6 +86,7 @@ const SlideShowDisplay = props => {
     ];
   } else if (
     props.displayNumber === props.slides.length - 1 &&
+    props.slides.length > 2 &&
     props.numForDisplay === 0
   ) {
     slideShowTransitionClass = [

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { accountAuthLogin } from '../../../store/actions/auth';
 import * as Yup from 'yup';
 
@@ -8,6 +8,8 @@ import classes from '../Account.module.scss';
 
 const Login = props => {
   const dispatch = useDispatch();
+
+  const authError = useSelector(state => state.auth.error);
 
   const accountLoginFormik = useFormik({
     initialValues: {
@@ -18,8 +20,7 @@ const Login = props => {
       email: Yup.string()
         .email('*please enter a valid email')
         .required('*required'),
-      password: Yup.string()
-        .required('*required')
+      password: Yup.string().required('*required')
     }),
     onSubmit: values => {
       dispatch(accountAuthLogin(values.email, values.password));
@@ -63,7 +64,8 @@ const Login = props => {
             {...accountLoginFormik.getFieldProps('password')}
           />
         </div>
-        {accountLoginFormik.touched.password && accountLoginFormik.errors.password ? (
+        {accountLoginFormik.touched.password &&
+        accountLoginFormik.errors.password ? (
           <div className={classes.AccountLoginErrorText}>
             {accountLoginFormik.errors.password}
           </div>
@@ -78,6 +80,14 @@ const Login = props => {
             Forgotten your password?
           </button>
         </div>
+        {authError && authError.message ? (
+          <div
+            className={classes.AccountLoginErrorText}
+            style={{ marginTop: '0.5rem' }}
+          >
+            *{authError.message}
+          </div>
+        ) : null}
         <button type='submit'>Login</button>
         <div className={classes.AccountLoginOr}>
           <span>Or</span>

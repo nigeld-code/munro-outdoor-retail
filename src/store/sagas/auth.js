@@ -27,7 +27,11 @@ export function* loginSaga(action) {
     yield localStorage.setItem('token', response.data.token);
     yield localStorage.setItem('tokenExpiration', expirationDate);
     yield put(
-      actions.accountLoginSuccess(response.data.token, response.data.email)
+      actions.accountLoginSuccess(
+        response.data.token,
+        response.data.email,
+        response.data.savedAddress
+      )
     );
     yield put(actions.accountCheckAuthTimeout(response.data.expiresIn));
   } catch (error) {
@@ -63,7 +67,13 @@ export function* checkAuthStateSaga(action) {
         }
       });
       if (response.data.exp >= Math.floor(new Date().getTime() / 1000)) {
-        yield put(actions.accountLoginSuccess(token, response.data.email));
+        yield put(
+          actions.accountLoginSuccess(
+            token,
+            response.data.email,
+            response.data.savedAddress
+          )
+        );
         yield put(
           actions.accountCheckAuthTimeout(
             response.data.exp * 1000 - new Date().getTime()

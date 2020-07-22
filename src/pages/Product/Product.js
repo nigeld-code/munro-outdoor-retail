@@ -87,20 +87,17 @@ const Product = () => {
       >
         <SlideShow
           slides={product.productImages.map(id => ({
-            contents: (
-              <React.Fragment>
-                <img
-                  style={{
-                    height: '100%',
-                    width: '100%',
-                    objectFit: 'cover',
-                    cursor: 'pointer'
-                  }}
-                  src={`${API_URL}images/850x850/${id}`}
-                  alt=''
-                />
-              </React.Fragment>
-            )
+            contents: {
+              img: {
+                src: `${API_URL}images/850x850/${id}`,
+                style: {
+                  height: '100%',
+                  width: '100%',
+                  objectFit: 'cover',
+                  cursor: 'pointer'
+                }
+              }
+            }
           }))}
           display={{
             height: '350px',
