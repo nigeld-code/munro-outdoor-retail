@@ -1,0 +1,126 @@
+@import "../../style-variables/variables";
+
+.Checkout {
+  width: 80%;
+  margin-left: 10%;
+}
+
+.Checkout_Title {
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.Checkout_Basket {
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.Checkout_Link {
+  color: map-get($colors, lincoln-green);
+}
+
+.Checkout_Line {
+  text-align: center;
+}
+
+.Checkout_CheckoutSubtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.Checkout_CheckoutSubTotalPrice {
+  width: 5rem;
+  margin-top: 0.25rem;
+  display: flex;
+  flex-flow: column nowrap;
+
+  & > p {
+    margin: 0;
+  }
+
+  & > small {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.Checkout_CheckoutText {
+  padding: 0.25rem 1rem;
+  text-align: right;
+  display: flex;
+  flex-flow: column nowrap;
+
+  & > p {
+    margin: 0;
+  }
+
+  & > small {
+    display: block;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    color: map-get($colors, lincoln-green);
+  }
+}
+
+.Checkout_Delivery {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.Checkout_DeliveryAddress {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0.5rem 2rem;
+  font-style: normal;
+
+  & > div {
+    color: map-get($colors, lincoln-green);
+    margin: 0 0.5rem;
+  }
+}
+
+.Checkout_CheckoutDeliveryPrice {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > p {
+    margin: 0;
+    padding: 0.25rem 1rem;
+    text-align: right;
+  }
+
+  & > span {
+    width: 5rem;
+  }
+}
+
+.Checkout_Total {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > p {
+    margin: 0;
+    padding: 0.25rem 1rem;
+    text-align: right;
+  }
+
+  & > span {
+    width: 5rem;
+  }
+}

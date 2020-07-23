@@ -11,6 +11,7 @@ import Product from './pages/Product/Product';
 import Products from './pages/Products/Products';
 import Basket from './pages/Basket/Basket';
 import Account from './pages/Account/Account';
+import Checkout from './pages/Checkout/Checkout';
 
 const App = ({ location }) => {
   const dispatch = useDispatch();
@@ -58,6 +59,11 @@ const App = ({ location }) => {
             path='/basket'
             exact
             component={props => <Basket {...props} />}
+          />
+          <Route
+            path='/checkout'
+            exact
+            component={props => <Checkout {...props} />}
           />
           <Route
             path='/passwordReset/:userId/:resetToken'

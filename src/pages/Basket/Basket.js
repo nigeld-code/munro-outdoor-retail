@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -38,6 +38,7 @@ const stores = {
 };
 
 const Basket = () => {
+  const history = useHistory();
   const user = useSelector(state => state.auth);
   const basket = useSelector(state => state.basket);
   const basketQty = useSelector(state => {
@@ -53,7 +54,7 @@ const Basket = () => {
 
   const voucherCodeState = useSelector(state => state.voucherCode);
 
-  const [deliverDetails, setDeliveryDetails] = useState({
+  const [deliveryDetails, setDeliveryDetails] = useState({
     isDelivery: true,
     name: user && user.savedAddress ? user.savedAddress.name : '',
     address: user && user.savedAddress ? user.savedAddress.address : '',
@@ -63,6 +64,8 @@ const Basket = () => {
   });
 
   const [inputValidation, setInputValidation] = useState({});
+
+  const [saveAddress, setSaveAddress] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -130,22 +133,31 @@ const Basket = () => {
   };
 
   const isDeliveryBtnHandler = isDelivery => {
-    if (isDelivery !== deliverDetails.isDelivery) {
+    if (isDelivery !== deliveryDetails.isDelivery) {
       setDeliveryDetails({
         isDelivery: isDelivery,
-        name: '',
-        address: '',
-        city: '',
-        postcode: '',
+        name:
+          isDelivery && user && user.savedAddress ? user.savedAddress.name : '',
+        address:
+          isDelivery && user && user.savedAddress
+            ? user.savedAddress.address
+            : '',
+        city:
+          isDelivery && user && user.savedAddress ? user.savedAddress.city : '',
+        postcode:
+          isDelivery && user && user.savedAddress
+            ? user.savedAddress.postcode
+            : '',
         email: user && user.email ? user.email : ''
       });
     }
     setInputValidation({});
+    setSaveAddress(false);
   };
 
   const deliverDetailsInputHandler = (event, field) => {
     setDeliveryDetails({
-      ...deliverDetails,
+      ...deliveryDetails,
       [field]: event.target.value
     });
     if (inputValidation[field] && inputValidation[field].length) {
@@ -159,7 +171,7 @@ const Basket = () => {
   const storeSelectionHandler = event => {
     if (event.target.value !== 'Choose...') {
       setDeliveryDetails({
-        ...deliverDetails,
+        ...deliveryDetails,
         name: event.target.value,
         address: stores[event.target.value].address,
         city: stores[event.target.value].city,
@@ -170,7 +182,7 @@ const Basket = () => {
       }
     } else {
       setDeliveryDetails({
-        ...deliverDetails,
+        ...deliveryDetails,
         name: '',
         address: '',
         city: '',
@@ -191,22 +203,28 @@ const Basket = () => {
       };
     };
     let passValidation = true;
-    Object.keys(deliverDetails).forEach(key => {
-      if (key !== 'isDelivery' && deliverDetails[key] === '') {
+    Object.keys(deliveryDetails).forEach(key => {
+      if (key !== 'isDelivery' && deliveryDetails[key] === '') {
         addInputValidationFlag(key, '*required');
         passValidation = false;
       }
     });
 
     if (basket.basket.length && passValidation) {
-      console.log('hello');
+      history.push({
+        pathname: '/checkout',
+        state: {
+          deliveryDetails,
+          saveAddress
+        }
+      });
     } else {
       setInputValidation(inputValidationObj);
     }
   };
 
   const saveAddressHandler = event => {
-    console.log(event.target.checked);
+    setSaveAddress(event.target.checked);
   };
 
   const makeDiscountDisplay = discount => {
@@ -222,8 +240,7 @@ const Basket = () => {
     }
   };
 
-  const calculateTotal = () => {
-    // basket.totalPrice + discounts(product > £ > %) + delivery = min 'FREE'
+  const calculateTotal = useMemo(() => {
     let runningTotal = basket.totalPrice;
     if (voucherCodeState.discounts.length) {
       const sortedDiscounts = [...voucherCodeState.discounts].sort((a, b) => {
@@ -252,7 +269,7 @@ const Basket = () => {
         if (runningTotal < 0) runningTotal = 0;
       });
     }
-    if (deliverDetails.isDelivery && basket.totalPrice < 60) {
+    if (deliveryDetails.isDelivery && basket.totalPrice < 60) {
       runningTotal += 5;
     }
     if (runningTotal > 0) {
@@ -260,7 +277,11 @@ const Basket = () => {
     } else {
       return '£0.00';
     }
-  };
+  }, [
+    basket.totalPrice,
+    voucherCodeState.discounts,
+    deliveryDetails.isDelivery
+  ]);
 
   let basketDisplay = (
     <React.Fragment>
@@ -376,7 +397,7 @@ const Basket = () => {
       <input
         type='text'
         id='name'
-        value={deliverDetails.name}
+        value={deliveryDetails.name}
         onChange={event => deliverDetailsInputHandler(event, 'name')}
       />
       {inputValidation.name
@@ -390,7 +411,7 @@ const Basket = () => {
       <input
         type='text'
         id='address'
-        value={deliverDetails.address}
+        value={deliveryDetails.address}
         onChange={event => deliverDetailsInputHandler(event, 'address')}
       />
       {inputValidation.address
@@ -404,7 +425,7 @@ const Basket = () => {
       <input
         type='text'
         id='city'
-        value={deliverDetails.city}
+        value={deliveryDetails.city}
         onChange={event => deliverDetailsInputHandler(event, 'city')}
       />
       {inputValidation.city
@@ -418,7 +439,7 @@ const Basket = () => {
       <input
         type='text'
         id='postcode'
-        value={deliverDetails.postcode}
+        value={deliveryDetails.postcode}
         onChange={event => deliverDetailsInputHandler(event, 'postcode')}
       />
       {inputValidation.postcode
@@ -442,6 +463,7 @@ const Basket = () => {
             <input
               type='checkbox'
               id='saveAddress'
+              checked={saveAddress}
               onChange={saveAddressHandler}
             />
           </small>
@@ -456,7 +478,7 @@ const Basket = () => {
       <input
         type='email'
         id='email'
-        value={deliverDetails.email}
+        value={deliveryDetails.email}
         onChange={event => deliverDetailsInputHandler(event, 'email')}
       />
       {inputValidation.email
@@ -488,14 +510,14 @@ const Basket = () => {
             </p>
           ))
         : null}
-      {deliverDetails.name !== '' ? (
+      {deliveryDetails.name !== '' ? (
         <div className={classes.Basket_DeliveryForm_StoreDetails}>
           <p>Selected Store:</p>
           <div className={classes.Basket_DeliveryForm_StoreDetailsAddress}>
-            <p>{deliverDetails.name},</p>
+            <p>{deliveryDetails.name},</p>
             <p>
-              {deliverDetails.address}, {deliverDetails.city},{' '}
-              {deliverDetails.postcode}
+              {deliveryDetails.address}, {deliveryDetails.city},{' '}
+              {deliveryDetails.postcode}
             </p>
           </div>
         </div>
@@ -507,7 +529,7 @@ const Basket = () => {
       <input
         type='email'
         id='email'
-        value={deliverDetails.email}
+        value={deliveryDetails.email}
         onChange={event => deliverDetailsInputHandler(event, 'email')}
       />
       {inputValidation.email
@@ -528,7 +550,7 @@ const Basket = () => {
         <div className={classes.Basket_DeliveryTotal}>
           <div className={classes.Basket_DeliveryTotalText}>Delivery</div>
           <div className={classes.Basket_DeliveryTotalValue}>
-            {basket.totalPrice < 60 && deliverDetails.isDelivery
+            {basket.totalPrice < 60 && deliveryDetails.isDelivery
               ? '£5'
               : 'Free'}
           </div>
@@ -536,7 +558,7 @@ const Basket = () => {
         <div className={classes.Basket_Delivery}>
           <button
             className={
-              deliverDetails.isDelivery
+              deliveryDetails.isDelivery
                 ? classes.Basket_Delivery_BtnActive
                 : null
             }
@@ -546,7 +568,7 @@ const Basket = () => {
           </button>
           <button
             className={
-              !deliverDetails.isDelivery
+              !deliveryDetails.isDelivery
                 ? classes.Basket_Delivery_BtnActive
                 : null
             }
@@ -555,7 +577,7 @@ const Basket = () => {
             Click &amp; Collect
           </button>
           <section>
-            {deliverDetails.isDelivery
+            {deliveryDetails.isDelivery
               ? deliveryInfoDisplay
               : clickCollectDisplay}
           </section>
@@ -571,7 +593,7 @@ const Basket = () => {
         <hr className={classes.Basket_Line} />
         <div className={classes.Basket_Total}>
           <p>Total</p>
-          <span>{calculateTotal()}</span>
+          <span>{calculateTotal}</span>
         </div>
       </React.Fragment>
     );

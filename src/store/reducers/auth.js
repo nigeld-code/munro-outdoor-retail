@@ -70,6 +70,18 @@ const accountLogoutComplete = (state, action) => {
   };
 };
 
+const accountUpdateSavedAddress = (state, action) => {
+  return {
+    ...state,
+    savedAddress: {
+      name: action.name,
+      address: action.address,
+      city: action.city,
+      postcode: action.postcode
+    }
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ACCOUNT_LOGIN:
@@ -86,6 +98,8 @@ const reducer = (state = initialState, action) => {
       return accountRegisterFail(state, action);
     case actionTypes.ACCOUNT_LOGOUT_COMPLETE:
       return accountLogoutComplete(state, action);
+    case actionTypes.ACCOUNT_UPDATE_SAVED_ADDRESS:
+      return accountUpdateSavedAddress(state, action);
     default:
       return state;
   }

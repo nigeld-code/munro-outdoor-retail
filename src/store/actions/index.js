@@ -15,7 +15,8 @@ export {
   accountAuthRegister,
   accountRegister,
   accountRegisterSuccess,
-  accountRegisterFail
+  accountRegisterFail,
+  accountUpdateSavedAddress
 } from './auth';
 
 export {

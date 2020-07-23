@@ -48,14 +48,15 @@ const BasketProduct = props => {
   let productDisplay = null;
   if (product) {
     productDisplay = (
-      <div
-        className={classes.BasketProduct}
-      >
+      <div className={classes.BasketProduct}>
         <article
           className={classes.BasketProduct_ProductDetails}
-          style={props.isModal ? { pointerEvents: 'none' } : null}
+          style={
+            props.isModal || props.isCheckout ? { pointerEvents: 'none' } : null
+          }
           onClick={() =>
-            !props.isModal && history.push(`product/${product.productSku}`)
+            !props.isModal ||
+            (props.isCheckout && history.push(`product/${product.productSku}`))
           }
         >
           <section className={classes.BasketProduct_ProductDetails_Images}>
@@ -69,27 +70,49 @@ const BasketProduct = props => {
               {product.productBrand + ' - ' + product.productName}
               {props.size ? ' - size: ' + props.size : null}
             </p>
-            <p>£{product.productPrice}</p>
+            <p>£{!props.isCheckout ? product.productPrice : props.price}</p>
           </section>
         </article>
-        <article className={classes.BasketProduct_ProductQtyPrice}>
-          <section className={classes.BasketProduct_ProductQtyPrice_Qty}>
-            <small>Qty</small>
-            <input
-              type='text'
-              value={productQty}
-              onChange={productChangeQtyHandler}
-            />
-            <button
-              disabled={productQty === props.qty}
-              onClick={updateBasketHandler}
-            >
-              update
-            </button>
-            <button onClick={removeBasketSkuHandler}>remove</button>
-          </section>
+        <article
+          className={classes.BasketProduct_ProductQtyPrice}
+          style={
+            props.isCheckout
+              ? {
+                  justifyContent: 'space-between',
+                  width: '35%'
+                }
+              : null
+          }
+        >
+          {!props.isCheckout ? (
+            <section className={classes.BasketProduct_ProductQtyPrice_Qty}>
+              <small>Qty</small>
+              <input
+                type='text'
+                value={productQty}
+                onChange={productChangeQtyHandler}
+              />
+              <button
+                disabled={productQty === props.qty}
+                onClick={updateBasketHandler}
+              >
+                update
+              </button>
+              <button onClick={removeBasketSkuHandler}>remove</button>
+            </section>
+          ) : (
+            <section className={classes.BasketProduct_ProductQtyPrice_Checkout}>
+              <small>X</small>
+              <div>
+                <span style={{ marginRight: '0.5rem' }}>Qty</span>
+                <span>{productQty}</span>
+              </div>
+            </section>
+          )}
           <section className={classes.BasketProduct_ProductQtyPrice_Price}>
-            £{product.productPrice * props.qty}
+            £
+            {(!props.isCheckout ? product.productPrice : props.price) *
+              props.qty}
           </section>
         </article>
       </div>

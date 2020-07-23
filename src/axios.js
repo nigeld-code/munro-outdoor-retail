@@ -17,3 +17,7 @@ export const productAxios = axios.create({
 export const voucherCodeAxios = axios.create({
   baseURL: API_URL + 'voucher/'
 });
+
+export const orderAxios = axios.create({
+  baseURL: API_URL + 'order/'
+});

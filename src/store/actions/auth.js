@@ -110,3 +110,13 @@ export const accountCheckAuthTimeout = expiresIn => {
     expiresIn
   };
 };
+
+export const accountUpdateSavedAddress = (name, address, city, postcode) => {
+  return {
+    type: actionTypes.ACCOUNT_UPDATE_SAVED_ADDRESS,
+    name,
+    address,
+    city,
+    postcode
+  };
+};

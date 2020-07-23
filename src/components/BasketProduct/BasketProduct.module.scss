@@ -86,3 +86,11 @@
 .BasketProduct_ProductQtyPrice_Price {
   width: 5rem;
 }
+
+.BasketProduct_ProductQtyPrice_Checkout {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 10rem;
+}
