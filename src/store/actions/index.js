@@ -32,5 +32,8 @@ export {
   checkAutoVoucherCodes,
   acceptVoucherCode,
   rejectVoucherCode,
-  removeVoucherCode
+  removeVoucherCode,
+  removeAllVoucherCodes
 } from './voucherCode';
+
+export { placeOrder } from './order';

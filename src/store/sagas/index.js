@@ -22,6 +22,8 @@ import {
 
 import { checkVoucherCodeSaga, checkAutoVoucherCodesSaga } from './voucherCode';
 
+import { placeOrderSaga } from './order';
+
 export function* watchAuth() {
   yield all([
     takeEvery(actionTypes.ACCOUNT_CHECK_AUTH_TIMEOUT, checkAuthTimeoutSaga),
@@ -49,4 +51,8 @@ export function* watchVoucherCode() {
     takeEvery(actionTypes.CHECK_VOUCHER_CODE, checkVoucherCodeSaga),
     takeEvery(actionTypes.CHECK_AUTO_VOUCHER_CODES, checkAutoVoucherCodesSaga)
   ]);
+}
+
+export function* watchOrder() {
+  yield all([takeEvery(actionTypes.PLACE_ORDER, placeOrderSaga)]);
 }

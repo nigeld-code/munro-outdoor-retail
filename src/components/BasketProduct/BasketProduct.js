@@ -103,7 +103,7 @@ const BasketProduct = props => {
           ) : (
             <section className={classes.BasketProduct_ProductQtyPrice_Checkout}>
               <small>X</small>
-              <div>
+              <div style={{ marginRight: '0.5rem' }}>
                 <span style={{ marginRight: '0.5rem' }}>Qty</span>
                 <span>{productQty}</span>
               </div>

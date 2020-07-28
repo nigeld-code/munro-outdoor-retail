@@ -514,7 +514,7 @@ const Basket = () => {
         <div className={classes.Basket_DeliveryForm_StoreDetails}>
           <p>Selected Store:</p>
           <div className={classes.Basket_DeliveryForm_StoreDetailsAddress}>
-            <p>{deliveryDetails.name},</p>
+            <p>{deliveryDetails.name} Munro Outdoor Retail,</p>
             <p>
               {deliveryDetails.address}, {deliveryDetails.city},{' '}
               {deliveryDetails.postcode}

@@ -39,3 +39,9 @@ export const removeVoucherCode = code => {
     code
   };
 };
+
+export const removeAllVoucherCodes = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_VOUCHER_CODES
+  };
+};

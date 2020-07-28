@@ -101,6 +101,43 @@
   }
 }
 
+.Modal_Order_Discounts {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1rem 0;
+  color: map-get($colors, lincoln-green);
+}
+
+.Modal_Order_DiscountsCodes {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.Modal_Order_Delivery {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Modal_Order_Delivery_Section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Modal_Order_Total {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @media only screen and (min-width: $small) {
   .Modal {
     width: 450px;

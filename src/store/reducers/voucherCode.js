@@ -40,6 +40,14 @@ const removeVoucherCode = (state, action) => {
   }
 };
 
+const clearAllVoucherCodes = (state, action) => {
+  return {
+    codes: [],
+    discounts: [],
+    message: {}
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ACCEPT_VOUCHER_CODE:
@@ -48,6 +56,8 @@ const reducer = (state = initialState, action) => {
       return rejectVoucherCode(state, action);
     case actionTypes.REMOVE_VOUCHER_CODE:
       return removeVoucherCode(state, action);
+    case actionTypes.REMOVE_ALL_VOUCHER_CODES:
+      return clearAllVoucherCodes(state, action);
     default:
       return state;
   }

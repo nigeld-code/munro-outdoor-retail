@@ -47,7 +47,13 @@ const Account = props => {
       {!userEmail ? (
         <div className={classes.AccountLogin}>{accountFormDisplay}</div>
       ) : (
-        <div>Hi {userEmail}</div>
+        <div className={classes.Account_Home}>
+          <div className={classes.Account_Home_Welcome}>Hi {userEmail}</div>
+          <div className={classes.Account_Home_Orders}>
+            <h3>Your Orders:</h3>
+            
+          </div>
+        </div>
       )}
     </React.Fragment>
   );

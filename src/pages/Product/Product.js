@@ -125,7 +125,7 @@ const Product = () => {
               }
             ]
           }}
-          timings={{ autoSlideChangeTime: 6000, slideChangeTime: 1200 }}
+          timings={{ autoSlideChangeTime: 2500, slideChangeTime: 1200 }}
         />
       </div>
     );
