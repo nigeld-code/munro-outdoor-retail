@@ -2,11 +2,12 @@
 
 .Modal {
   position: fixed;
-  margin-top: 10vh;
+  margin-top: 5vh;
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;
-  max-height: 85vh;
+  width: 95%;
+  min-width: 300px;
+  max-height: 80vh;
   overflow-y: auto;
   z-index: 900;
   background-color: map-get($colors, cultured);
@@ -126,9 +127,9 @@
 
 .Modal_Order_Delivery_Section {
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .Modal_Order_Total {
@@ -138,9 +139,51 @@
   align-items: center;
 }
 
+.Modal_Order_Discounts_Title_SmallScreen {
+  display: none;
+  font-size: 0.8rem;
+  text-align: right;
+  color: map-get($colors, lincoln-green);
+  margin-bottom: -0.9rem;
+  margin-top: 1rem;
+  padding-right: 3.5rem;
+}
+
+.Modal_Order_Delivery_SectionType {
+  padding: 0.25rem 1rem;
+}
+
+@media only screen and (max-width: $medium) {
+  .Modal_BasketButtons {
+    & > button {
+      min-height: 5rem;
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .Modal_Order_Discounts_Title {
+    display: none;
+  }
+  .Modal_Order_Discounts_Title_SmallScreen {
+    display: block;
+  }
+  .Modal_Order_Delivery_SectionType {
+    display: none;
+  }
+  .Modal_Order_Delivery_Address {
+    padding-left: 1rem;
+  }
+}
+
 @media only screen and (min-width: $small) {
   .Modal {
     width: 450px;
+  }
+  .Modal_Order_Delivery_Section {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 

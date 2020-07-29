@@ -106,17 +106,25 @@ const Modal = () => {
             </div>
           </div>
           {codesDisplay ? (
-            <div className={classes.Modal_Order_Discounts}>
-              <div style={{ alignSelf: 'flex-start', fontSize: '0.8rem' }}>
+            <React.Fragment>
+              <div className={classes.Modal_Order_Discounts_Title_SmallScreen}>
                 Voucher Codes
               </div>
-              <div className={classes.Modal_Order_DiscountsCodes}>
-                {codesDisplay}
+              <div className={classes.Modal_Order_Discounts}>
+                <div
+                  className={classes.Modal_Order_Discounts_Title}
+                  style={{ alignSelf: 'flex-start', fontSize: '0.8rem' }}
+                >
+                  Voucher Codes
+                </div>
+                <div className={classes.Modal_Order_DiscountsCodes}>
+                  {codesDisplay}
+                </div>
+                <div className={classes.Modal_Order_DiscountsCodes}>
+                  {discountsDisplay}
+                </div>
               </div>
-              <div className={classes.Modal_Order_DiscountsCodes}>
-                {discountsDisplay}
-              </div>
-            </div>
+            </React.Fragment>
           ) : null}
           <hr />
           <div className={classes.Modal_Order_Delivery}>
@@ -126,10 +134,10 @@ const Modal = () => {
                   ? 'Delivery to:'
                   : 'Collect at:'}
               </div>
-              <div>
+              <div className={classes.Modal_Order_Delivery_Address}>
                 {modalContents.order.delivery.name}
                 {!modalContents.order.delivery.isDelivery
-                  ? ' Munro Outdoor Retail'
+                  ? ' Munro Outdoor Retail,'
                   : null}
                 <br />
                 {modalContents.order.delivery.address},{' '}
@@ -139,7 +147,7 @@ const Modal = () => {
               </div>
             </div>
             <div className={classes.Modal_Order_Delivery_Section}>
-              <div style={{ padding: '0.25rem 1rem' }}>
+              <div className={classes.Modal_Order_Delivery_SectionType}>
                 {modalContents.order.delivery.isDelivery
                   ? 'Delivery'
                   : 'Click & Collect'}

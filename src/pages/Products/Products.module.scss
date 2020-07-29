@@ -10,13 +10,17 @@
   box-sizing: border-box;
 }
 
-.ProductsFilter {
+.ProductsFilter_Display {
   display: none;
   width: 14rem;
+}
+
+.ProductsFilter {
+  width: 90%;
   border: 1px solid map-get($colors, lincoln-green);
   border-radius: 5px;
   color: map-get($colors, lincoln-green);
-  margin: 0.25rem 0.25rem 0.5rem 0.25rem;
+  margin: 0.25rem auto;
   box-sizing: border-box;
 
   & > ul {
@@ -171,6 +175,33 @@
   }
 }
 
+.Products_Filter_Mobile {
+  width: 95.5vw;
+  display: flex;
+  justify-content: center;
+
+  & > button {
+    padding: 0.5rem;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+.Products_Filter_MobileButton_OFF {
+  background-color: map-get($colors, cultured);
+  color: map-get($colors, lincoln-green);
+  border: 2px solid map-get($colors, lincoln-green);
+}
+
+.Products_Filter_MobileButton_ON {
+  background-color: map-get($colors, lincoln-green);
+  color: map-get($colors, cultured);
+  border: 2px solid map-get($colors, lincoln-green);
+}
+
 @media only screen and (min-width: $small) {
   .ProductsItem {
     width: 50%;
@@ -184,8 +215,17 @@
 }
 
 @media only screen and (min-width: $medium) {
-  .ProductsFilter {
+  .ProductsFilter_Display {
     display: block;
+  }
+
+  .ProductsFilter {
+    width: 100%;
+    margin: 0.25rem 0.25rem 0.5rem 0.25rem;
+  }
+
+  .Products_Filter_Mobile {
+    display: none;
   }
 
   .Products_Right {

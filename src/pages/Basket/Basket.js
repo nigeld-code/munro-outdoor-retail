@@ -50,6 +50,8 @@ const Basket = () => {
   });
   const dispatch = useDispatch();
 
+  const screenSize = useSelector(state => state.config.screenSize);
+
   const [voucherCode, setVoucherCode] = useState('');
 
   const voucherCodeState = useSelector(state => state.voucherCode);
@@ -308,8 +310,19 @@ const Basket = () => {
   if (basketQty) {
     discountCodesDisplay = (
       <React.Fragment>
+        {screenSize <= 2 ? (
+          <label
+            htmlFor='voucher'
+            style={{
+              margin: '0.5rem',
+              fontSize: '0.9rem'
+            }}
+          >
+            Voucher
+          </label>
+        ) : null}
         <form className={classes.Basket_Voucher} onSubmit={discountCodeHandler}>
-          <label htmlFor='voucher'>Voucher</label>
+          {screenSize > 2 ? <label htmlFor='voucher'>Voucher</label> : null}
           <input
             type='text'
             id='voucher'
@@ -342,7 +355,7 @@ const Basket = () => {
         {voucherCodeState.codes.map((code, index) => {
           return (
             <small key={code + index}>
-              {!index ? <span>Voucher Codes</span> : null}
+              {!index && screenSize >= 3 ? <span>Voucher Codes</span> : null}
               <span style={{ minWidth: '8rem', display: 'inline-block' }}>
                 "{code}"{' '}
                 <span
@@ -378,10 +391,16 @@ const Basket = () => {
         <div className={classes.Basket_BasketSubtotal}>
           <div className={classes.Basket_BasketText}>
             <p>Subtotal</p>
+            {screenSize < 3 && codesDisplay ? (
+              <small>Voucher Codes</small>
+            ) : null}
             {codesDisplay}
           </div>
           <div className={classes.Basket_BasketSubTotalPrice}>
             <p>£{basket.totalPrice}</p>
+            {screenSize < 3 && discountsDisplay ? (
+              <small style={{ color: 'transparent' }}>_</small>
+            ) : null}
             {discountsDisplay}
           </div>
         </div>
@@ -605,7 +624,9 @@ const Basket = () => {
       style={!basket.basket.length ? { margin: '6rem auto' } : null}
     >
       <div className={classes.Basket_Title}>
-        <span>Shopping Basket</span> {' - ' + basketQty}
+        <span>Shopping Basket</span>
+        {screenSize >= 3 ? ' - ' : <br />}
+        {basketQty}
         {basketQty === 1 ? ' item' : ' items'}
         {basketQty ? (
           <button

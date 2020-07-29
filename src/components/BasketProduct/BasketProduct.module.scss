@@ -8,8 +8,16 @@
   width: 100%;
 }
 
+.BasketProduct_SmallScreen {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: flex-start;
+  border-color: map-get($colors, lincoln-green);
+}
+
 .BasketProduct_ProductDetails {
-  width: 60%;
   padding: 0.5rem;
   display: flex;
   flex-flow: row nowrap;
@@ -24,6 +32,12 @@
   }
 }
 
+.BasketProduct_ProductDetails_SmallScreen {
+  flex-flow: column nowrap !important;
+  align-self: center;
+  width: 100%;
+}
+
 .BasketProduct_ProductDetails_Images {
   margin-right: 1rem;
 }
@@ -34,6 +48,14 @@
   justify-content: flex-end;
   align-items: center;
   margin-left: 0.5rem;
+}
+
+.BasketProduct_ProductQtyPrice_SmallScreen {
+  align-self: flex-end;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .BasketProduct_ProductQtyPrice_Qty {
@@ -87,10 +109,25 @@
   width: 5rem;
 }
 
+.BasketProduct_ProductQtyPrice_Price_ScreenSmall {
+  width: 5rem;
+  margin: 1rem 0;
+  align-self: flex-end;
+}
+
 .BasketProduct_ProductQtyPrice_Checkout {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  width: 10rem;
+
+  & > small {
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .BasketProduct_ProductQtyPrice_Checkout {
+    margin-right: 2.5rem;
+  }
 }

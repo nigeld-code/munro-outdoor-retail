@@ -32,6 +32,7 @@
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .Basket_BasketSubtotal {
@@ -62,6 +63,9 @@
 .Basket_Voucher {
   text-align: center;
   margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   & > label {
     margin: 0.5rem;
@@ -75,10 +79,14 @@
     border: 1px solid map-get($colors, lincoln-green);
     border-radius: 5px 0 0 5px;
     width: 50%;
+    min-width: 250px;
+    height: 2.5rem;
     outline: none;
+    box-sizing: border-box;
   }
 
   & > button {
+    height: 2.5rem;
     background-color: map-get($colors, lincoln-green);
     color: map-get($colors, cultured);
     border: 1px solid map-get($colors, lincoln-green);
@@ -87,6 +95,7 @@
     border-left: none;
     cursor: pointer;
     outline: none;
+    box-sizing: border-box;
 
     &:hover {
       background-color: map-get($colors, cultured);
@@ -154,9 +163,10 @@
 
 .Basket_Delivery {
   margin: 1rem auto;
-  width: 60%;
+  width: 110%;
 
   & > button {
+    height: 3.5rem;
     width: 50%;
     padding: 0.5rem;
     background-color: map-get($colors, cultured);
@@ -166,6 +176,7 @@
     font-size: 1rem;
     color: map-get($colors, lincoln-green);
     cursor: pointer;
+    box-sizing: border-box;
 
     &:hover {
       color: map-get($colors, cultured);
@@ -190,7 +201,7 @@
 .Basket_DeliveryForm {
   display: flex;
   flex-flow: column nowrap;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   justify-content: flex-start;
   align-items: flex-start;
 
@@ -199,9 +210,9 @@
   }
 
   & > input {
-    margin: 0.5rem 0.25rem;
+    margin: 0.5rem 0;
     padding: 0.5rem;
-    width: 100%;
+    width: 95%;
     font-size: 1.2rem;
     border: 1px solid map-get($colors, charleston-green);
     border-radius: 3px;
@@ -252,7 +263,7 @@
 
 .Basket_ProceedToCheckoutBtn {
   display: block;
-  width: 50%;
+  width: 90%;
   margin: 2rem auto;
   padding: 1rem;
   background-color: map-get($colors, lincoln-green);
@@ -308,5 +319,47 @@
 
   & > span {
     width: 5rem;
+  }
+}
+
+@media only screen and (min-width: $xsmall) {
+  .Basket_Delivery {
+    width: 100%;
+
+    & > button {
+      height: 3rem;
+    }
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .Basket_Delivery {
+    width: 90%;
+  }
+  .Basket_ProceedToCheckoutBtn {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .Basket_Delivery {
+    width: 80%;
+  }
+  .Basket_DeliveryForm {
+    padding: 1rem 2rem;
+
+    & > input {
+      margin: 0.5rem 0.25rem;
+      width: 100%;
+    }
+  }
+  .Basket_ProceedToCheckoutBtn {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .Basket_Delivery {
+    width: 60%;
   }
 }

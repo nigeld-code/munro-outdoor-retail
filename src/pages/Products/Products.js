@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import useLoadProducts from '../../hooks/useLoadProducts';
 
@@ -39,6 +40,14 @@ const Products = () => {
     refineOptionsFiltered: [],
     brandsFiltered: []
   });
+
+  const [mobileFilter, setMobileFilter] = useState(false);
+
+  const screenSize = useSelector(state => state.config.screenSize);
+
+  useEffect(() => {
+    setMobileFilter(false);
+  }, [screenSize]);
 
   const filterHandler = (type, item) => {
     if (type && item) {
@@ -427,10 +436,27 @@ const Products = () => {
         <Breadcrumbs breadcrumbs={breadcrumbs ? breadcrumbs : null} />
       ) : null}
       <div className={classes.Products}>
-        {refineDisplayBreadcrumbs || refineDisplayBrands
-          ? productsFilter
-          : null}
+        {refineDisplayBreadcrumbs || refineDisplayBrands ? (
+          <div className={classes.ProductsFilter_Display}>{productsFilter}</div>
+        ) : null}
         <div className={classes.Products_Right}>
+          {productsDisplay.length ? (
+            <React.Fragment>
+              <div className={classes.Products_Filter_Mobile}>
+                <button
+                  className={
+                    mobileFilter
+                      ? classes.Products_Filter_MobileButton_ON
+                      : classes.Products_Filter_MobileButton_OFF
+                  }
+                  onClick={() => setMobileFilter(!mobileFilter)}
+                >
+                  <i className='nld-filter'></i> Refine your search
+                </button>
+              </div>
+              {mobileFilter ? productsFilter : null}
+            </React.Fragment>
+          ) : null}
           <div className={classes.ProductsSort}>{productsSort}</div>
           <section className={classes.ProductsContainer}>
             {productsDisplay.length ? (

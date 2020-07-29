@@ -72,9 +72,13 @@
 
 .Checkout_Delivery {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
   align-items: flex-end;
+
+  & > address {
+    align-self: flex-start;
+  }
 }
 
 .Checkout_DeliveryAddress {
@@ -126,7 +130,7 @@
 }
 
 .Checkout_Payment {
-  width: 60%;
+  width: 100%;
   margin: 1rem auto;
   border: 2px solid map-get($colors, lincoln-green);
   border-radius: 8px;
@@ -150,7 +154,7 @@
     & > select {
       margin: 0.5rem 5%;
       padding: 0.5rem;
-      width: 50%;
+      width: 70%;
       font-size: 1.2rem;
       border: 1px solid map-get($colors, charleston-green);
       border-radius: 3px;
@@ -169,11 +173,12 @@
 
     & > small {
       margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     & > button {
       margin: 1.5rem auto;
-      width: 30%;
+      width: 80%;
       min-width: 8rem;
       padding: 0.5rem 1rem;
       background-color: map-get($colors, lincoln-green);
@@ -201,4 +206,59 @@
   text-align: right;
   width: 90%;
   margin: 0 auto;
+}
+
+@media only screen and (min-width: $small) {
+  .Checkout_Payment {
+    width: 90%;
+
+    & > form {
+      & > select {
+        width: 50%;
+      }
+      & > button {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $medium) {
+  .Checkout_Payment {
+    width: 70%;
+
+    & > form {
+      & > button {
+        width: 45%;
+      }
+    }
+  }
+
+  .Checkout_Delivery {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+@media only screen and (min-width: $large) {
+  .Checkout_Payment {
+    width: 60%;
+
+    & > form {
+      & > button {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $xlarge) {
+  .Checkout_Payment {
+    & > form {
+      & > button {
+        width: 35%;
+      }
+    }
+  }
 }

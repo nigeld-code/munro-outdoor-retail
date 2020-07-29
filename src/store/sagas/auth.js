@@ -84,6 +84,7 @@ export function* checkAuthStateSaga(action) {
       }
     } catch (error) {
       yield put(actions.accountLoginFail(error.response.data));
+      yield put(actions.accountLogout());
     }
   }
 }
